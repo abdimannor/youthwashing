@@ -4,6 +4,10 @@ A multi-page static website about the youthwashing phenomenon — when companies
 
 The site highlights the concept and lifts real youth movements working for change.
 
+## Live Demo
+
+[abdimannor.github.io/youthwashing](https://abdimannor.github.io/youthwashing/)
+
 ## Pages
 
 - **Home** — introduction to youthwashing and featured youth movements
