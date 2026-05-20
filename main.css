@@ -131,6 +131,50 @@ section p {
   margin-bottom: 12px;
 }
 
+.eyebrow {
+  color: #fd5e53;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.checklist {
+  max-width: 980px;
+}
+
+.checklist-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.checklist article {
+  background: #262626;
+  border-radius: 8px;
+  color: #ffffff;
+  padding: 22px;
+}
+
+.checklist span {
+  color: #fd5e53;
+  display: inline-block;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.checklist h3 {
+  font-size: 21px;
+  margin-bottom: 12px;
+}
+
+.checklist p {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 16px;
+  margin-bottom: 0;
+}
+
 section form {
   display: flex;
   flex-direction: column;
@@ -268,5 +312,9 @@ footer p {
 
   section form {
     padding: 20px;
+  }
+
+  .checklist-grid {
+    grid-template-columns: 1fr;
   }
 }

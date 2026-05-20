@@ -4,20 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Youthwashing — Ungdomsrörelsen</title>
-  <meta name="description" content="A multi-page site about youthwashing and real youth movements fighting for change.">
+  <meta name="description" content="En flersidessajt om youthwashing, verkligt ungdomsinflytande och skillnaden mellan representation och delaktighet.">
   <link rel="canonical" href="https://abdimannor.github.io/youthwashing/">
   <meta property="og:title" content="Youthwashing — Ungdomsrörelsen">
-  <meta property="og:description" content="A multi-page site about youthwashing and real youth movements fighting for change.">
+  <meta property="og:description" content="En flersidessajt om youthwashing, verkligt ungdomsinflytande och skillnaden mellan representation och delaktighet.">
   <meta property="og:url" content="https://abdimannor.github.io/youthwashing/">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Youthwashing — Ungdomsrörelsen">
-  <meta name="twitter:description" content="A multi-page site about youthwashing and real youth movements fighting for change.">
+  <meta name="twitter:description" content="En flersidessajt om youthwashing, verkligt ungdomsinflytande och skillnaden mellan representation och delaktighet.">
+  <meta name="theme-color" content="#262626">
   <link rel="stylesheet" href="main.css">
 </head>
 <body>
   <header>
-    <nav id="menu">
+    <nav id="menu" aria-label="Huvudnavigation">
       <ul>
         <li><a href="index.html" aria-current="page">Hem</a></li>
         <li><a href="om.html">Om oss</a></li>
@@ -25,44 +26,67 @@
       </ul>
     </nav>
     <div id="hero">
-      <h1>Youthwashing - Ungdomsrörelsen</h1>
-      <p>Vi kämpar för äkta ungdomsrörelser och mot företagsanpassade imitationer.</p>
+      <p class="eyebrow">Representation är inte samma sak som inflytande</p>
+      <h1>Youthwashing</h1>
+      <p>En sida om när ungdomskultur används som fasad, och vad verklig delaktighet kräver.</p>
     </div>
   </header>
+
   <main>
     <section id="about">
-      <h2>Vad är Youthwashing?</h2>
-      <p>Youthwashing är en term som beskriver när företag och organisationer använder ungdomskultur och ungdomsrörelser som en marknadsföringsstrategi, utan att faktiskt stödja ungdomars röster och åsikter.</p>
-      <p>På den här sidan vill vi uppmärksamma fenomenet och samtidigt lyfta fram verkliga ungdomsrörelser som kämpar för förändring.</p>
+      <h2>Vad är youthwashing?</h2>
+      <p>Youthwashing händer när företag, myndigheter eller organisationer använder unga människors språk, estetik eller engagemang för att framstå som moderna och lyhörda, utan att ge unga reell möjlighet att påverka.</p>
+      <p>Problemet är inte att unga syns. Problemet är när synligheten används som bevis på delaktighet, trots att besluten redan är tagna någon annanstans.</p>
     </section>
+
+    <section class="checklist" aria-labelledby="checklist-title">
+      <h2 id="checklist-title">Tre varningssignaler</h2>
+      <div class="checklist-grid">
+        <article>
+          <span>01</span>
+          <h3>Unga får synas men inte bestämma</h3>
+          <p>De används i kampanjer, panelsamtal eller bilder, men saknar inflytande över beslut, budget eller strategi.</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h3>Språket är radikalt, strukturen är oförändrad</h3>
+          <p>Organisationen lånar ord som delaktighet, framtid och förändring, men ändrar inte sina egna maktordningar.</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h3>Engagemang blir varumärke</h3>
+          <p>Unga människors frågor paketeras som image, utan långsiktigt stöd till de rörelser som redan gör arbetet.</p>
+        </article>
+      </div>
+    </section>
+
     <section id="featured">
-      <h2>Ungdomsrörelser vi stödjer</h2>
+      <h2>Rörelser och organisationer att följa</h2>
       <ul>
         <li>
-          <img src="bild1.png" class="imgRound" alt="Bild på ungdomsrörelse">
+          <img src="bild1.png" class="imgRound" alt="Symbolbild för ungdomsrörelse">
           <h3>Sveriges Ungdomsråd</h3>
-          <p>Sveriges Ungdomsråd är en nationell organisation som arbetar för att förbättra ungdomars villkor i samhället. De jobbar för att öka ungas inflytande och engagemang genom att erbjuda utbildningar, utveckla ungdomspolitiska program och verka för att ungas röster hörs i samhällsdebatten. Genom sitt arbete skapar de en plattform för ungas idéer och åsikter att höras och tas på allvar.</p>
+          <p>En nationell organisation som arbetar med ungas inflytande, lokala ungdomsråd och demokratiskt deltagande.</p>
           <a class="button" href="https://sverigesungdomsrad.se/" target="_blank" rel="noopener">Läs mer</a>
         </li>
         <li>
-          <img src="bild2.png" class="imgRound" alt="Bild på ungdomsrörelse">
+          <img src="bild2.png" class="imgRound" alt="Symbolbild för ungdomsengagemang">
           <h3>Rädda Barnens Ungdomsförbund</h3>
-          <p>Rädda Barnens Ungdomsförbund arbetar för att främja barns rättigheter och arbetar aktivt för att förbättra barns livssituation i Sverige och globalt. De erbjuder ungdomar möjlighet att engagera sig i frågor som rör barns rättigheter, samt att delta i utbildningar och kampanjer. Genom att stärka ungas medvetenhet och engagemang i barns rättigheter bidrar de till en mer rättvis och jämlik värld.</p>
+          <p>Ett ungdomsförbund som arbetar för barns rättigheter och ger unga möjlighet att organisera sig kring rättvisa och påverkan.</p>
           <a class="button" href="https://rbuf.se/" target="_blank" rel="noopener">Läs mer</a>
         </li>
         <li>
-          <img src="bild3.png" alt="Bild på ungdomsrörelse">
+          <img src="bild3.png" alt="Symbolbild för global ungdomsrörelse">
           <h3>Youth 2030 Movement</h3>
-          <p>Youth 2030 Movement är en global rörelse som arbetar för att öka ungas deltagande i samhällsfrågor och beslutsfattande. Genom att engagera ungdomar och ge dem en plattform för att uttrycka sina åsikter och idéer strävar de efter att skapa en mer inkluderande och rättvis värld. De arbetar med frågor som rör utbildning, hälsa, klimatförändringar och social rättvisa för att förbättra ungas villkor och säkerställa en hållbar framtid.</p>
+          <p>En rörelse med fokus på ungas deltagande i samhällsfrågor, beslutsfattande och framtidsfrågor.</p>
           <a class="button" href="https://youth2030.se/" target="_blank" rel="noopener">Läs mer</a>
         </li>
       </ul>
     </section>
-</main>
-<footer>
-  <div class="container">
-    <p>&copy; Youthwashing - Ungdomsrörelsen</p>
-  </div>
-</footer>
+  </main>
+
+  <footer>
+    <p>&copy; Youthwashing — Ungdomsrörelsen</p>
+  </footer>
 </body>
 </html>

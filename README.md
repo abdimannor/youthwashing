@@ -28,10 +28,10 @@ The project highlights the concept and points toward youth movements working for
 - [x] Add clearer page metadata
 
 ### Phase 3: Content Upgrade
-- [ ] Add concrete examples of youthwashing patterns
-- [ ] Add a checklist for recognizing performative youth branding
-- [ ] Separate "real participation" from "symbolic participation"
-- [ ] Improve source and link context
+- [x] Add concrete examples of youthwashing patterns
+- [x] Add a checklist for recognizing performative youth branding
+- [x] Separate "real participation" from "symbolic participation"
+- [x] Improve source and link context
 
 ### Phase 4: Full Version
 - [ ] Turn the site into a stronger mini-resource
