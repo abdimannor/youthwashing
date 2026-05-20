@@ -1,8 +1,8 @@
 # Youthwashing
 
-A multi-page static website about the youthwashing phenomenon — when companies and organizations use youth culture as a marketing strategy without genuinely supporting young people's voices.
+A multi-page site about youthwashing: when companies or organizations use youth culture as branding without giving young people real influence.
 
-The site highlights the concept and lifts real youth movements working for change.
+The project highlights the concept and points toward youth movements working for genuine participation.
 
 ## Live Demo
 
@@ -10,14 +10,35 @@ The site highlights the concept and lifts real youth movements working for chang
 
 ## Pages
 
-- **Home** — introduction to youthwashing and featured youth movements
-- **About** — background and goals of the movement
-- **Contact** — contact form
+- **Home**: introduction to youthwashing and featured movements
+- **About**: background and purpose
+- **Contact**: simple contact page
 
-## Tech
+## Build Phases
 
-HTML · CSS · Google Fonts (Raleway, Impact)
+### Phase 1: Original Site
+- [x] Build a three-page static website
+- [x] Explain the basic youthwashing concept
+- [x] Link to youth organizations and movements
+
+### Phase 2: Portfolio Polish
+- [x] Clean up text encoding and Swedish copy
+- [x] Improve navigation consistency across pages
+- [x] Make the layout more readable on mobile
+- [x] Add clearer page metadata
+
+### Phase 3: Content Upgrade
+- [ ] Add concrete examples of youthwashing patterns
+- [ ] Add a checklist for recognizing performative youth branding
+- [ ] Separate "real participation" from "symbolic participation"
+- [ ] Improve source and link context
+
+### Phase 4: Full Version
+- [ ] Turn the site into a stronger mini-resource
+- [ ] Add a campaign or article-style landing page
+- [ ] Add accessibility and performance checks
+- [ ] Add a clearer visual identity
 
 ## License
 
-MIT
+Released under the MIT License. See [LICENSE](LICENSE).

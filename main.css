@@ -2,6 +2,8 @@
 
 body {
   font-family: 'Raleway', sans-serif;
+  background: #fbfaf7;
+  color: #262626;
 }
 
 h1, h2 {
@@ -22,6 +24,11 @@ header {
   flex-direction: column;
   align-items: center;
   padding: 20px;
+}
+
+#hero {
+  max-width: 920px;
+  text-align: center;
 }
 
 header h1 {
@@ -62,9 +69,10 @@ nav a {
 }
 
 img {
-  width: 25%;
+  width: min(180px, 38vw);
   height: auto;
   margin-bottom: 20px;
+  display: block;
 }
 
 .imgRound {
@@ -75,15 +83,21 @@ nav a:hover {
   color: #fd5e53;
 }
 
+nav a[aria-current="page"] {
+  color: #fd5e53;
+}
+
 main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 42px 20px 0;
 }
 
 section {
   max-width: 800px;
   margin-bottom: 50px;
+  width: 100%;
 }
 
 section h2 {
@@ -96,6 +110,25 @@ section p {
   font-size: 20px;
   line-height: 1.5;
   margin-bottom: 30px;
+}
+
+#featured ul {
+  list-style: none;
+  display: grid;
+  gap: 22px;
+}
+
+#featured li {
+  background: #ffffff;
+  border: 1px solid #ece6df;
+  border-radius: 8px;
+  box-shadow: 0 12px 32px rgba(38, 38, 38, 0.08);
+  padding: 24px;
+}
+
+#featured h3 {
+  font-size: 24px;
+  margin-bottom: 12px;
 }
 
 section form {
@@ -203,4 +236,37 @@ footer p {
 
 #contact {
   margin-top: 20px;
+}
+
+@media (max-width: 720px) {
+  header h1 {
+    font-size: 36px;
+    line-height: 1.05;
+  }
+
+  nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  nav li {
+    margin: 0;
+  }
+
+  nav a {
+    font-size: 17px;
+  }
+
+  section h2 {
+    font-size: 30px;
+  }
+
+  section p {
+    font-size: 17px;
+  }
+
+  section form {
+    padding: 20px;
+  }
 }
