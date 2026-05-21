@@ -223,7 +223,7 @@ section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 390px;
+  min-height: 430px;
   padding: 24px;
   text-align: center;
 }
@@ -335,6 +335,12 @@ section {
   height: 152px;
   object-fit: cover;
   width: 152px;
+}
+
+.featured-copy {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 26px;
 }
 
 #featured .button {
@@ -452,5 +458,9 @@ footer p {
   #featured img.imgRound {
     height: 132px;
     width: 132px;
+  }
+
+  #featured li {
+    min-height: 390px;
   }
 }
