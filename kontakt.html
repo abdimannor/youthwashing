@@ -3,58 +3,83 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Youthwashing — Kontakt</title>
-  <meta name="description" content="Kontakta Youthwashing — Ungdomsrörelsen.">
+  <title>Youthwashing - Kontakt och användning</title>
+  <meta name="description" content="Kontakt, användning och praktiska sätt att använda Youthwashing-resursen i samtal, projekt och granskning.">
   <link rel="canonical" href="https://abdimannor.github.io/youthwashing/kontakt.html">
-  <meta property="og:title" content="Youthwashing — Kontakt">
-  <meta property="og:description" content="Kontakta Youthwashing — Ungdomsrörelsen.">
+  <meta property="og:title" content="Youthwashing - Kontakt och användning">
+  <meta property="og:description" content="Använd resursen som diskussionsstöd, checklista eller startpunkt för bättre ungdomsinflytande.">
   <meta property="og:url" content="https://abdimannor.github.io/youthwashing/kontakt.html">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Youthwashing — Kontakt">
-  <meta name="twitter:description" content="Kontakta Youthwashing — Ungdomsrörelsen.">
+  <meta name="twitter:title" content="Youthwashing - Kontakt och användning">
+  <meta name="twitter:description" content="Praktiska sätt att använda Youthwashing-resursen.">
   <link rel="stylesheet" href="main.css">
 </head>
 <body>
-  <header>
-    <nav id="menu">
+  <header class="site-header compact">
+    <nav id="menu" aria-label="Huvudnavigation">
+      <a class="brand" href="index.html">Youthwashing</a>
       <ul>
         <li><a href="index.html">Hem</a></li>
-        <li><a href="om.html">Om oss</a></li>
+        <li><a href="om.html">Om</a></li>
         <li><a href="kontakt.html" aria-current="page">Kontakt</a></li>
       </ul>
     </nav>
-    <div id="hero">
-      <h1>Kontakt</h1>
-      <p>Har du frågor eller synpunkter? Kontakta oss så återkommer vi så snart vi kan.</p>
-    </div>
+    <section class="hero" aria-labelledby="page-title">
+      <p class="eyebrow">Användning</p>
+      <h1 id="page-title">Ta med frågorna in i nästa projekt.</h1>
+      <p class="lead">Resursen kan användas som samtalsstöd, checklista eller snabb granskning innan en kampanj, workshop eller rapport publiceras.</p>
+    </section>
   </header>
+
   <main>
-    <section id="contact">
-      <h2>Skicka ett meddelande</h2>
+    <section class="method-grid" aria-labelledby="use-title">
+      <div class="section-heading">
+        <p class="eyebrow">Praktiskt</p>
+        <h2 id="use-title">Tre sätt att använda sidan</h2>
+      </div>
+      <div class="cards">
+        <article>
+          <h3>Inför en kampanj</h3>
+          <p>Gå igenom frågorna innan innehåll, bildval och budskap låses.</p>
+        </article>
+        <article>
+          <h3>I en workshop</h3>
+          <p>Låt deltagare placera exempel på stegen från dekoration till beslutskraft.</p>
+        </article>
+        <article>
+          <h3>Vid granskning</h3>
+          <p>Jämför organisationens löften med faktisk timing, mandat, resurser och återkoppling.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" class="contact-panel">
+      <div>
+        <p class="eyebrow">Kontakt</p>
+        <h2>Skicka ett meddelande</h2>
+        <p>Formuläret är statiskt i den här versionen. Det fungerar som en tydlig prototyp för framtida backend eller formulärtjänst.</p>
+      </div>
       <form action="#" method="POST">
-        <div class="form-group">
-          <label for="name">Namn</label>
-          <input type="text" id="name" name="name" placeholder="Skriv ditt namn här" required>
-        </div>
-        <div class="form-group">
-          <label for="email">E-post</label>
-          <input type="email" id="email" name="email" placeholder="Skriv din e-postadress här" required>
-        </div>
-        <div class="form-group">
-          <label for="subject">Ämne</label>
-          <input type="text" id="subject" name="subject" placeholder="Skriv in ämnet för ditt meddelande" required>
-        </div>
-        <div class="form-group">
-          <label for="message">Meddelande</label>
-          <textarea id="message" name="message" placeholder="Skriv ditt meddelande här" required></textarea>
-        </div>
+        <label for="name">Namn</label>
+        <input type="text" id="name" name="name" placeholder="Skriv ditt namn här" required>
+
+        <label for="email">E-post</label>
+        <input type="email" id="email" name="email" placeholder="Skriv din e-postadress här" required>
+
+        <label for="subject">Ämne</label>
+        <input type="text" id="subject" name="subject" placeholder="Skriv ämnet för ditt meddelande" required>
+
+        <label for="message">Meddelande</label>
+        <textarea id="message" name="message" placeholder="Skriv ditt meddelande här" required></textarea>
+
         <button type="submit" class="button">Skicka</button>
       </form>
     </section>
   </main>
+
   <footer>
-    <p>&copy; Youthwashing - Ungdomsrörelsen</p>
+    <p>&copy; Youthwashing - Ungdomsinflytande på riktigt</p>
   </footer>
 </body>
 </html>

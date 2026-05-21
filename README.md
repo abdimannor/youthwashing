@@ -1,6 +1,6 @@
 # Youthwashing
 
-A multi-page site about youthwashing: when companies or organizations use youth culture as branding without giving young people real influence.
+A multi-page mini-resource about youthwashing: when companies or organizations use youth culture as branding without giving young people real influence.
 
 The project highlights the concept and points toward youth movements working for genuine participation.
 
@@ -34,10 +34,15 @@ The project highlights the concept and points toward youth movements working for
 - [x] Improve source and link context
 
 ### Phase 4: Full Version
-- [ ] Turn the site into a stronger mini-resource
-- [ ] Add a campaign or article-style landing page
-- [ ] Add accessibility and performance checks
-- [ ] Add a clearer visual identity
+- [x] Turn the site into a stronger mini-resource
+- [x] Add a campaign or article-style landing page
+- [x] Add accessibility and performance checks
+- [x] Add a clearer visual identity
+
+### Phase 5: Future Polish
+- [ ] Add downloadable workshop worksheet
+- [ ] Add example cases for schools, NGOs, brands, and public sector
+- [ ] Add a lightweight form backend or contact service
 
 ## License
 
