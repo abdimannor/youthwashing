@@ -104,7 +104,7 @@ nav a[aria-current="page"] {
 }
 
 .eyebrow {
-  color: var(--accent);
+  color: var(--accent-dark);
   font-size: 0.78rem;
   font-weight: 900;
   letter-spacing: 0.08em;
@@ -134,8 +134,8 @@ h1 {
 }
 
 .button {
-  background: var(--accent);
-  border: 1px solid var(--accent);
+  background: var(--accent-dark);
+  border: 1px solid var(--accent-dark);
   border-radius: 8px;
   color: #ffffff;
   display: inline-block;
@@ -146,8 +146,8 @@ h1 {
 }
 
 .button:hover {
-  background: var(--accent-dark);
-  border-color: var(--accent-dark);
+  background: #8f2a24;
+  border-color: #8f2a24;
   transform: translateY(-1px);
 }
 
@@ -693,5 +693,46 @@ footer p {
   textarea {
     background-image: repeating-linear-gradient(transparent, transparent 19pt, #888888 19pt, #888888 20pt);
     border-bottom: 0;
+  }
+}
+
+/* Tillgänglighet: kontrast på mörk bakgrund, fokus och hopplänk */
+.site-header .eyebrow {
+  color: var(--accent);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.skip-link {
+  background: var(--ink);
+  color: #ffffff;
+  left: 12px;
+  padding: 10px 14px;
+  position: absolute;
+  top: -60px;
+  z-index: 10;
+}
+
+.skip-link:focus {
+  top: 12px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .button {
+    transition: none;
+  }
+
+  .button:hover {
+    transform: none;
   }
 }
