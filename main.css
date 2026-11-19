@@ -123,6 +123,7 @@
   .site-footer > * { grid-column: content; }
 
   main { flex: 1; padding-block-end: var(--space-2xl); }
+  main:has(> .panel:last-child) { padding-block-end: 0; }
   main > * + * { margin-block-start: var(--space-2xl); }
 
   .block { container-type: inline-size; }
@@ -181,7 +182,7 @@
   }
 
   .brand::before,
-  .site-footer::before {
+  .site-footer p::before {
     content: "";
     inline-size: 0.85em;
     aspect-ratio: 1;
@@ -436,6 +437,12 @@
   .case { padding-block-start: var(--space-l); border-block-start: 1px solid var(--line); }
   .case + .case { margin-block-start: var(--space-xl); }
 
+  @media (min-width: 60rem) {
+    .case { display: grid; grid-template-columns: 4fr 8fr; gap: 0 var(--space-xl); }
+    .case > :not(.section-heading) { grid-column: 2; }
+    .case .section-heading { grid-row: span 2; }
+  }
+
   .verdicts { display: grid; gap: var(--space-s); }
 
   @container (min-width: 40rem) {
@@ -513,7 +520,7 @@
     font-size: var(--step--1);
   }
 
-  .site-footer::before { grid-column: content; margin-block-end: var(--space-s); }
+  .site-footer p { display: flex; align-items: center; gap: var(--space-xs); }
 }
 
 @layer utilities {
@@ -546,7 +553,9 @@
     main { display: block; padding: 0; }
     .worksheet > * + * { margin-block-start: 9pt; }
     .worksheet-title { font-size: 18pt; }
-    .ws-block { padding-block-start: 5pt; border-block-start-width: 1.5pt; break-inside: avoid; }
+    .ws-block { padding-block-start: 5pt; border-block-start-width: 1.5pt; }
+    .ws-block :is(h2, .ws-hint, label) { break-after: avoid; }
+    .ws-checks li, .ws-levels, textarea { break-inside: avoid; }
     .ws-block h2 { font-size: 12pt; margin-block-end: 3pt; }
     .ws-hint { margin-block-end: 4pt; }
     .ws-fields label { margin-block-start: 4pt; }
