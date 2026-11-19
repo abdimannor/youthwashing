@@ -526,3 +526,46 @@
     white-space: nowrap;
   }
 }
+
+@layer print {
+  @media print {
+    @page { size: A4; margin: 14mm 16mm; }
+
+    :root {
+      color-scheme: light;
+      --paper: #fff;
+      --surface: #fff;
+      --ink: #000;
+      --ink-soft: #333;
+      --line: #999;
+      --real: #000;
+    }
+
+    body { font-size: 10.5pt; line-height: 1.4; }
+    .site-header, .site-footer, .skip-link, .worksheet-tools { display: none; }
+    main { display: block; padding: 0; }
+    .worksheet > * + * { margin-block-start: 9pt; }
+    .worksheet-title { font-size: 18pt; }
+    .ws-block { padding-block-start: 5pt; border-block-start-width: 1.5pt; break-inside: avoid; }
+    .ws-block h2 { font-size: 12pt; margin-block-end: 3pt; }
+    .ws-hint { margin-block-end: 4pt; }
+    .ws-fields label { margin-block-start: 4pt; }
+    .ws-line { block-size: 1.4em; border-block-end-style: solid; }
+
+    .ws-fields :is(input, textarea) {
+      padding: 2pt 0;
+      background: transparent;
+      border: 0;
+      border-block-end: 1px solid #000;
+      border-radius: 0;
+      resize: none;
+    }
+
+    .ws-fields textarea {
+      border: 0;
+      background: repeating-linear-gradient(transparent 0 19pt, #888 19pt 20pt);
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+  }
+}
