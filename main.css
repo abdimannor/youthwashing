@@ -248,7 +248,7 @@ section {
   margin-bottom: 12px;
 }
 
-.checklist p,
+.checklist article p,
 .cards p,
 #featured p {
   color: var(--muted);
@@ -256,7 +256,7 @@ section {
   line-height: 1.65;
 }
 
-.checklist p {
+.checklist article p {
   color: rgba(255, 255, 255, 0.76);
 }
 
@@ -693,6 +693,8 @@ footer p {
   textarea {
     background-image: repeating-linear-gradient(transparent, transparent 19pt, #888888 19pt, #888888 20pt);
     border-bottom: 0;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 }
 
@@ -735,4 +737,16 @@ textarea:focus-visible {
   .button:hover {
     transform: none;
   }
+}
+
+.visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }
