@@ -25,7 +25,7 @@
     --signal-tint: light-dark(#f6e1d8, #33201b);
     --real: light-dark(#1b6a50, #79cfa9);
     --real-tint: light-dark(#dbeae2, #172d25);
-    --band: #14201b;
+    --band: light-dark(#14201b, #1b3a2f);
     --band-ink: #f4efe6;
     --band-soft: #b9c2bc;
     --band-signal: #ff9a80;
@@ -240,7 +240,7 @@
     border-block-end: 1px solid var(--line);
   }
 
-  .hero--home h1 { font-size: var(--step-4); max-inline-size: 15ch; letter-spacing: -0.025em; }
+  .hero--home h1 { font-size: var(--step-4); max-inline-size: 10.5em; letter-spacing: -0.025em; }
 
   /* The four levels as a rising staircase: from facade to real influence. */
   .hero--home::after {
