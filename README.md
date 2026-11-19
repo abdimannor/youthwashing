@@ -1,48 +1,52 @@
 # Youthwashing
 
-A multi-page mini-resource about youthwashing: when companies or organizations use youth culture as branding without giving young people real influence.
+A small Swedish-language resource about youthwashing.
 
-The project highlights the concept and points toward youth movements working for genuine participation.
+Live site: [abdimannor.github.io/youthwashing](https://abdimannor.github.io/youthwashing/)
 
-## Live Demo
+## The idea
 
-[abdimannor.github.io/youthwashing](https://abdimannor.github.io/youthwashing/)
+Youthwashing is when a company, public body or organisation uses young people's language, look or engagement to appear modern and responsive, without sharing real responsibility, budget or decision-making power. Young people are in the pictures, on the panels and in the campaign, but the decisions behind it stay where they were.
 
-## Pages
+Visibility can be worth something. The site does not treat every campaign with young faces as suspect. It tries to help the reader tell the difference between actual participation and symbolic presence, mostly by giving them better questions to ask: when were young people involved, what could they change, were they paid and supported, and did anyone tell them what happened to their input.
 
-- **Home**: introduction to youthwashing and featured movements
-- **About**: background and purpose
-- **Contact**: simple contact page
+## Who it is for
 
-## Build Phases
+People who plan or review work that involves young people: teachers and student councils, youth organisations and associations, communications and campaign staff, and municipal officials running consultations. It can also be used by young people themselves who want to judge whether an invitation to "take part" is worth their time.
 
-### Phase 1: Original Site
-- [x] Build a three-page static website
-- [x] Explain the basic youthwashing concept
-- [x] Link to youth organizations and movements
+## What is on each page
 
-### Phase 2: Portfolio Polish
-- [x] Clean up text encoding and Swedish copy
-- [x] Improve navigation consistency across pages
-- [x] Make the layout more readable on mobile
-- [x] Add clearer page metadata
+- `index.html` (Hem): a short definition, three warning signs, four levels of participation (decoration, consultation, co-creation, decision-making power), five questions to ask before a campaign is launched, and links to three Swedish youth organisations.
+- `fall.html` (Exempel): constructed examples from a school, an association, a brand and a municipality. Each shows what symbolic participation could look like next to real participation, with questions to ask. The examples are hypothetical and labelled as such; they do not describe real organisations.
+- `arbetsblad.html` (Arbetsblad): a printable A4 worksheet built from the checklist content on the site, with space to write.
+- `om.html` (Om): why the site exists and the four review questions it is built around: timing, mandate, resources and feedback.
+- `kontakt.html` (Kontakt): three ways to use the resource and a contact form.
 
-### Phase 3: Content Upgrade
-- [x] Add concrete examples of youthwashing patterns
-- [x] Add a checklist for recognizing performative youth branding
-- [x] Separate "real participation" from "symbolic participation"
-- [x] Improve source and link context
+## Using the worksheet in a workshop
 
-### Phase 4: Full Version
-- [x] Turn the site into a stronger mini-resource
-- [x] Add a campaign or article-style landing page
-- [x] Add accessibility and performance checks
-- [x] Add a clearer visual identity
+1. Open `arbetsblad.html` and print it, or use the browser's "Save as PDF". Navigation and buttons are hidden in print and the layout is set up for A4.
+2. Split participants into small groups and give each group one example. This can be one of the constructed cases on `fall.html` or something from their own setting, such as a recent campaign, a consultation or a council meeting.
+3. Groups work through the sheet in order: describe the example, tick the warning signs they see, place it on one of the four levels, then answer the four review questions.
+4. Finish with section 5, one concrete step that would move the example towards real influence, and compare answers across groups. Disagreement about which level an example belongs on tends to be a good starting point for discussion.
 
-### Phase 5: Future Polish
-- [ ] Add downloadable workshop worksheet
-- [ ] Add example cases for schools, NGOs, brands, and public sector
-- [ ] Add a lightweight form backend or contact service
+The fields can also be filled in on screen, but nothing is saved or sent anywhere.
+
+## How it is built
+
+Plain HTML and one CSS file (`main.css`). There is no build step, no framework and no JavaScript beyond the print button on the worksheet. The site is deployed to GitHub Pages by `.github/workflows/deploy.yml` on every push to `master`.
+
+To run it locally, open `index.html` in a browser, or serve the folder so that links behave as they do online:
+
+```sh
+python3 -m http.server 8000
+# then open http://localhost:8000/
+```
+
+## What is still open
+
+- The contact form on `kontakt.html` has no backend. It is a static prototype and submitting it does nothing. It needs a form service or a small backend before it can be used.
+- The constructed examples and the worksheet copy are drafts awaiting review.
+- The site is Swedish only.
 
 ## License
 
