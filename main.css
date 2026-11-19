@@ -7,7 +7,7 @@
   html { -webkit-text-size-adjust: none; text-size-adjust: none; }
   img { display: block; max-inline-size: 100%; block-size: auto; }
   input, button, textarea { font: inherit; color: inherit; }
-  [role="list"] { list-style: none; padding: 0; }
+  :is(.nav-list, .orgs) { list-style: none; padding: 0; }
 }
 
 @layer tokens {
