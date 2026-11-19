@@ -181,8 +181,7 @@
     text-decoration: none;
   }
 
-  .brand::before,
-  .site-footer p::before {
+  .brand::before {
     content: "";
     inline-size: 0.85em;
     aspect-ratio: 1;
@@ -519,8 +518,6 @@
     color: var(--ink-soft);
     font-size: var(--step--1);
   }
-
-  .site-footer p { display: flex; align-items: center; gap: var(--space-xs); }
 }
 
 @layer utilities {
