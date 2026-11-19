@@ -13,17 +13,19 @@
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Youthwashing - Arbetsblad för workshop">
   <meta name="twitter:description" content="Utskrivbart arbetsblad för workshop om ungdomsdelaktighet.">
-  <meta name="theme-color" content="#262626">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f4efe6" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#121a17" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="main.css">
   <script src="worksheet.js" defer></script>
 </head>
-<body class="worksheet-page">
+<body>
   <a class="skip-link" href="#innehall">Hoppa till innehållet</a>
-  <header class="site-header compact">
-    <nav id="menu" aria-label="Huvudnavigation">
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Huvudnavigation">
       <a class="brand" href="index.html">Youthwashing</a>
-      <ul>
+      <ul class="nav-list" role="list">
         <li><a href="index.html">Hem</a></li>
         <li><a href="fall.html">Exempel</a></li>
         <li><a href="om.html">Om</a></li>
@@ -99,7 +101,7 @@
     <p class="ws-footer">Youthwashing - Ungdomsinflytande på riktigt · abdimannor.github.io/youthwashing</p>
   </main>
 
-  <footer>
+  <footer class="site-footer">
     <p>&copy; Youthwashing - Ungdomsinflytande på riktigt</p>
   </footer>
 </body>

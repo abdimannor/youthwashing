@@ -13,76 +13,78 @@
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Youthwashing - Ungdomsinflytande på riktigt">
   <meta name="twitter:description" content="En svensk mini-resurs om youthwashing och verkligt ungdomsinflytande.">
-  <meta name="theme-color" content="#262626">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f4efe6" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#121a17" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="main.css">
 </head>
 <body>
   <a class="skip-link" href="#innehall">Hoppa till innehållet</a>
   <header class="site-header">
-    <nav id="menu" aria-label="Huvudnavigation">
+    <nav class="site-nav" aria-label="Huvudnavigation">
       <a class="brand" href="index.html">Youthwashing</a>
-      <ul>
+      <ul class="nav-list" role="list">
         <li><a href="index.html" aria-current="page">Hem</a></li>
         <li><a href="fall.html">Exempel</a></li>
         <li><a href="om.html">Om</a></li>
         <li><a href="kontakt.html">Kontakt</a></li>
       </ul>
     </nav>
-
-    <section class="hero" aria-labelledby="page-title">
-      <p class="eyebrow">Representation är inte samma sak som makt</p>
-      <h1 id="page-title">Ungdomsinflytande måste vara mer än en bild i en kampanj.</h1>
-      <p class="lead">Youthwashing händer när unga får synas, citeras eller användas som symboler utan att få påverka besluten bakom fasaden.</p>
-      <div class="hero-actions">
-        <a class="button" href="#diagnos">Känn igen mönstret</a>
-        <a class="button secondary" href="om.html">Se metoden</a>
-      </div>
-    </section>
   </header>
 
   <main id="innehall">
-    <section class="split-section" id="diagnos">
-      <div>
-        <p class="eyebrow">Definition</p>
-        <h2>Vad är youthwashing?</h2>
+    <section class="hero hero--home" aria-labelledby="page-title">
+      <p class="eyebrow">Representation är inte samma sak som makt</p>
+      <h1 id="page-title">Ungdomsinflytande måste vara mer än en bild i en kampanj.</h1>
+      <p class="lead">Youthwashing händer när unga får synas, citeras eller användas som symboler utan att få påverka besluten bakom fasaden.</p>
+      <div class="actions">
+        <a class="button" href="#diagnos">Känn igen mönstret</a>
+        <a class="button button--quiet" href="om.html">Se metoden</a>
       </div>
+    </section>
+
+    <section class="split" id="diagnos" aria-labelledby="diagnos-title">
+      <header class="section-heading">
+        <p class="eyebrow">Definition</p>
+        <h2 id="diagnos-title">Vad är youthwashing?</h2>
+      </header>
       <div class="prose">
         <p>Youthwashing är när företag, myndigheter eller organisationer använder unga människors språk, estetik eller engagemang för att verka moderna och lyhörda, utan att dela verkligt ansvar, budget eller beslutskraft.</p>
         <p>Synlighet kan vara värdefullt, men den räcker inte. Frågan är om unga bara får vara ansikte utåt, eller om deras perspektiv faktiskt förändrar riktning, prioriteringar och resultat.</p>
       </div>
     </section>
 
-    <section class="checklist" aria-labelledby="checklist-title">
-      <div class="section-heading">
+    <section class="block" aria-labelledby="checklist-title">
+      <header class="section-heading">
         <p class="eyebrow">Snabb diagnos</p>
         <h2 id="checklist-title">Tre varningssignaler</h2>
-      </div>
-      <div class="checklist-grid">
-        <article>
-          <span>01</span>
+      </header>
+      <div class="cards cards--signals">
+        <article class="card">
+          <span class="card-number">01</span>
           <h3>Unga får synas men inte bestämma</h3>
           <p>De är med i bilder, panelsamtal och kampanjer men saknar inflytande över beslut, budget och strategi.</p>
         </article>
-        <article>
-          <span>02</span>
+        <article class="card">
+          <span class="card-number">02</span>
           <h3>Radikalt språk, oförändrad struktur</h3>
           <p>Organisationen pratar om framtid och delaktighet, men samma personer har fortfarande all makt.</p>
         </article>
-        <article>
-          <span>03</span>
+        <article class="card">
+          <span class="card-number">03</span>
           <h3>Engagemang blir varumärke</h3>
           <p>Unga människors frågor paketeras som image utan långsiktigt stöd till arbetet som redan pågår.</p>
         </article>
       </div>
     </section>
 
-    <section class="ladder" aria-labelledby="ladder-title">
-      <div class="section-heading">
+    <section class="block" aria-labelledby="ladder-title">
+      <header class="section-heading">
         <p class="eyebrow">Från symbol till inflytande</p>
         <h2 id="ladder-title">Fyra nivåer av delaktighet</h2>
-      </div>
-      <ol>
+      </header>
+      <ol class="ladder">
         <li>
           <strong>Dekoration</strong>
           <span>Unga används för att skapa känsla, energi eller trovärdighet.</span>
@@ -102,56 +104,50 @@
       </ol>
     </section>
 
-    <section class="action-panel" aria-labelledby="action-title">
-      <div>
+    <section class="panel" aria-labelledby="action-title">
+      <header class="section-heading">
         <p class="eyebrow">Gör bättre</p>
         <h2 id="action-title">Fem frågor innan en kampanj lanseras</h2>
-      </div>
-      <ul>
+      </header>
+      <ol class="questions">
         <li>Vilka unga var med innan idén var färdig?</li>
         <li>Vilka beslut kan de faktiskt påverka?</li>
         <li>Finns ersättning, tid och stöd för deras arbete?</li>
         <li>Är kritiska röster välkomna även när de stör budskapet?</li>
         <li>Vad händer efter kampanjen när uppmärksamheten försvinner?</li>
-      </ul>
-      <p class="panel-link">Frågorna finns också som <a href="arbetsblad.html">utskrivbart arbetsblad</a> för workshop, och som <a href="fall.html">konstruerade exempel</a> från skola, förening, företag och kommun.</p>
+      </ol>
+      <p class="panel-note">Frågorna finns också som <a href="arbetsblad.html">utskrivbart arbetsblad</a> för workshop, och som <a href="fall.html">konstruerade exempel</a> från skola, förening, företag och kommun.</p>
     </section>
 
-    <section id="featured" aria-labelledby="featured-title">
-      <div class="section-heading">
+    <section class="block" aria-labelledby="featured-title">
+      <header class="section-heading">
         <p class="eyebrow">Fortsätt läsa</p>
         <h2 id="featured-title">Rörelser och organisationer att följa</h2>
-      </div>
-      <ul>
-        <li>
-          <img src="bild1.png" class="imgRound" alt="" width="512" height="512" loading="lazy" decoding="async">
-          <div class="featured-copy">
-            <h3>Sveriges Ungdomsråd</h3>
-            <p>Arbetar med ungas inflytande, lokala ungdomsråd och demokratiskt deltagande.</p>
-          </div>
-          <a class="button" href="https://sverigesungdomsrad.se/" target="_blank" rel="noopener">Läs mer<span class="visually-hidden"> om Sveriges Ungdomsråd</span></a>
+      </header>
+      <ul class="orgs" role="list">
+        <li class="org">
+          <img src="bild1.png" alt="" width="512" height="512" loading="lazy" decoding="async">
+          <h3>Sveriges Ungdomsråd</h3>
+          <p>Arbetar med ungas inflytande, lokala ungdomsråd och demokratiskt deltagande.</p>
+          <a class="more" href="https://sverigesungdomsrad.se/" target="_blank" rel="noopener">Läs mer<span class="visually-hidden"> om Sveriges Ungdomsråd</span></a>
         </li>
-        <li>
-          <img src="bild2.png" class="imgRound" alt="" width="180" height="180" loading="lazy" decoding="async">
-          <div class="featured-copy">
-            <h3>Rädda Barnens Ungdomsförbund</h3>
-            <p>Ger unga möjlighet att organisera sig kring barns rättigheter, rättvisa och påverkan.</p>
-          </div>
-          <a class="button" href="https://rbuf.se/" target="_blank" rel="noopener">Läs mer<span class="visually-hidden"> om Rädda Barnens Ungdomsförbund</span></a>
+        <li class="org">
+          <img src="bild2.png" alt="" width="180" height="180" loading="lazy" decoding="async">
+          <h3>Rädda Barnens Ungdomsförbund</h3>
+          <p>Ger unga möjlighet att organisera sig kring barns rättigheter, rättvisa och påverkan.</p>
+          <a class="more" href="https://rbuf.se/" target="_blank" rel="noopener">Läs mer<span class="visually-hidden"> om Rädda Barnens Ungdomsförbund</span></a>
         </li>
-        <li>
+        <li class="org">
           <img src="bild3.jpg" alt="" width="600" height="291" loading="lazy" decoding="async">
-          <div class="featured-copy">
-            <h3>Youth 2030 Movement</h3>
-            <p>Fokuserar på ungas deltagande i samhällsfrågor, beslut och framtidsfrågor.</p>
-          </div>
-          <a class="button" href="https://youth2030.se/" target="_blank" rel="noopener">Läs mer<span class="visually-hidden"> om Youth 2030 Movement</span></a>
+          <h3>Youth 2030 Movement</h3>
+          <p>Fokuserar på ungas deltagande i samhällsfrågor, beslut och framtidsfrågor.</p>
+          <a class="more" href="https://youth2030.se/" target="_blank" rel="noopener">Läs mer<span class="visually-hidden"> om Youth 2030 Movement</span></a>
         </li>
       </ul>
     </section>
   </main>
 
-  <footer>
+  <footer class="site-footer">
     <p>&copy; Youthwashing - Ungdomsinflytande på riktigt</p>
   </footer>
 </body>
