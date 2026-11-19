@@ -693,6 +693,8 @@ footer p {
   textarea {
     background-image: repeating-linear-gradient(transparent, transparent 19pt, #888888 19pt, #888888 20pt);
     border-bottom: 0;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 }
 
