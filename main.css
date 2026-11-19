@@ -14,21 +14,24 @@
   :root {
     color-scheme: light dark;
 
-    /* Colour: paper and ink, with two meaning-carrying colours.
+    /* Colour: a civic campaign poster. Deep green carries the header,
+       hero and bands; reading sections sit on a cool pale mint.
        Signal = the facade (symbolic). Real = actual influence. */
-    --paper: light-dark(#f4efe6, #121a17);
-    --surface: light-dark(#fffcf6, #1a2420);
-    --ink: light-dark(#14201b, #ece6da);
-    --ink-soft: light-dark(#4b544f, #b5b0a5);
-    --line: light-dark(#ddd4c4, #2e3a35);
+    --paper: light-dark(#e8f3ec, #0b1a14);
+    --surface: light-dark(#f5fbf7, #11241c);
+    --ink: light-dark(#0d2a20, #e4f1e9);
+    --ink-soft: light-dark(#3b5248, #a9c2b5);
+    --line: light-dark(#bcd6c7, #24392f);
     --signal: light-dark(#b8391f, #ff8f73);
-    --signal-tint: light-dark(#f6e1d8, #33201b);
+    --signal-tint: light-dark(#f8e0d8, #33201b);
     --real: light-dark(#1b6a50, #79cfa9);
-    --real-tint: light-dark(#dbeae2, #172d25);
-    --band: light-dark(#14201b, #1b3a2f);
-    --band-ink: #f4efe6;
-    --band-soft: #b9c2bc;
+    --real-tint: light-dark(#d1e9dc, #15301f);
+    --band: #0f3b2e;
+    --band-ink: #eef7f1;
+    --band-soft: #b5cdbf;
+    --band-line: #2f5a4b;
     --band-signal: #ff9a80;
+    --band-real: #7fd6ad;
     --focus: light-dark(#1b4fd8, #9db8ff);
 
     /* Type */
@@ -160,6 +163,24 @@
 
   .skip-link:focus { translate: 0; }
 
+  /* Poster surfaces: header, hero, bands and footer sit on deep green.
+     Re-map the tokens so every component inside reads correctly. */
+  .site-header,
+  .hero,
+  .panel,
+  .site-footer {
+    --paper: var(--band);
+    --surface: var(--band);
+    --ink: var(--band-ink);
+    --ink-soft: var(--band-soft);
+    --line: var(--band-line);
+    --signal: var(--band-signal);
+    --real: var(--band-real);
+    --focus: #9db8ff;
+    background: var(--band);
+    color: var(--ink);
+  }
+
   /* Header and navigation */
   .site-header { padding-block: var(--space-m); border-block-end: 1px solid var(--line); }
 
@@ -228,15 +249,18 @@
   .lead { max-inline-size: 46ch; color: var(--ink-soft); font-size: var(--step-1); line-height: 1.5; }
 
   /* Hero */
-  .hero { padding-block-start: var(--space-xl); }
+  .hero {
+    grid-column: full;
+    padding-block: var(--space-xl);
+    padding-inline: max(var(--gutter), (100% - var(--content)) / 2);
+  }
   .hero h1 { max-inline-size: 20ch; margin-block-end: var(--space-m); }
 
   .hero--home {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     gap: 0 var(--space-xl);
-    padding-block: var(--space-xl) var(--space-l);
-    border-block-end: 1px solid var(--line);
+    padding-block: var(--space-xl);
   }
 
   .hero--home h1 { font-size: var(--step-4); max-inline-size: 10.5em; letter-spacing: -0.025em; }
@@ -367,8 +391,6 @@
     gap: var(--space-l) var(--space-xl);
     padding-block: var(--space-xl);
     padding-inline: max(var(--gutter), (100% - var(--content)) / 2);
-    background: var(--band);
-    color: var(--band-ink);
   }
 
   .panel .eyebrow { color: var(--band-signal); }
