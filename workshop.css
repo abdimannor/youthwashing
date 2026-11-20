@@ -1,0 +1,59 @@
+/* Workshop mode. Large type for a projector, one slide per screen. */
+.workshop { max-inline-size: var(--content); margin-inline: auto; padding: var(--space-l) var(--gutter); }
+.ws-start h1 { font-family: var(--font-display); font-size: clamp(2.5rem, 1.5rem + 4vw, 4.5rem); margin: 0 0 var(--space-s); }
+.ws-start p { max-inline-size: 60ch; font-size: 1.15rem; }
+.ws-start-actions { display: flex; flex-wrap: wrap; gap: var(--space-s); margin-block: var(--space-m) var(--space-l); }
+.deck { display: grid; gap: var(--space-m); }
+.deck:focus { outline: none; }
+.slide { border-block-start: 6px solid var(--line); padding-block: var(--space-m); }
+.slide--level { border-color: var(--real); }
+.slide--signal { border-color: var(--signal); }
+.slide--question { border-color: var(--focus); }
+.sl-kicker { text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700; color: var(--ink-soft); margin: 0 0 var(--space-xs); }
+.sl-title { font-family: var(--font-display); font-size: clamp(1.75rem, 1.2rem + 2vw, 2.75rem); line-height: 1.1; margin: 0 0 var(--space-s); text-wrap: balance; }
+.sl-text { font-size: 1.2rem; max-inline-size: 48ch; margin: 0; }
+
+/* Presenting: the deck takes the whole viewport. */
+.is-presenting body { overflow: hidden; }
+.is-presenting .site-header, .is-presenting .skip-link, .is-presenting .ws-start-actions, .is-presenting .ws-start p, .is-presenting .motion-notice { display: none; }
+/* Keep the page's h1 for assistive tech while the deck covers the screen. */
+.is-presenting .ws-start { position: absolute; inline-size: 1px; block-size: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.is-presenting .deck {
+  position: fixed; inset: 0; z-index: 50; margin: 0; display: grid; grid-template-rows: 1fr auto;
+  background: var(--band); color: var(--band-ink);
+}
+.is-presenting .slide {
+  align-self: center; justify-self: center; inline-size: min(100% - 2 * var(--gutter), 70rem);
+  border-block-start-width: 1rem; padding-block: 3vh;
+}
+.is-presenting .slide--level { border-color: var(--band-real); }
+.is-presenting .slide--signal { border-color: var(--band-signal); }
+.is-presenting .slide--question { border-color: #9db8ff; }
+.is-presenting .slide--intro { border-color: var(--band-line); }
+.is-presenting .slide[hidden] { display: none; }
+.is-presenting .sl-kicker { color: var(--band-soft); font-size: clamp(1rem, 0.6rem + 1vw, 1.6rem); }
+.is-presenting .sl-title { font-size: clamp(2.5rem, 1rem + 5.5vw, 6.5rem); }
+.is-presenting .sl-text { font-size: clamp(1.4rem, 0.8rem + 2vw, 3rem); line-height: 1.3; max-inline-size: 32ch; }
+.deck-bar {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.75rem;
+  padding: 0.75rem var(--gutter); border-block-start: 1px solid var(--band-line);
+}
+.deck-bar button {
+  font: inherit; font-size: 1rem; padding: 0.5rem 0.9rem; border-radius: var(--radius-s);
+  border: 1px solid var(--band-soft); background: transparent; color: var(--band-ink); cursor: pointer;
+}
+.deck-bar button:hover { background: var(--band-line); }
+.deck-bar button:focus-visible { outline: 3px solid #9db8ff; outline-offset: 2px; }
+.deck-count { margin: 0; min-inline-size: 7rem; text-align: center; font-variant-numeric: tabular-nums; }
+.deck-timer { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; margin-inline-start: auto; }
+.deck-clock { margin: 0; font-size: 1.6rem; font-weight: 700; font-variant-numeric: tabular-nums; min-inline-size: 4ch; }
+.deck-clock.is-done { color: var(--band-signal); }
+
+/* Transition only when the motion switch is on. */
+:root[data-motion="on"].is-presenting .slide:not([hidden]) { animation: ws-in 0.45s var(--ease) both; }
+@keyframes ws-in { from { opacity: 0; transform: translateX(2.5rem); } }
+@media (prefers-reduced-motion: no-preference) {
+  :root:not([data-motion]).is-presenting .slide:not([hidden]) { animation: ws-in 0.45s var(--ease) both; }
+}
+@media print { .deck-bar, .ws-start-actions { display: none !important; } }
+.deck-bar[hidden] { display: none; }
