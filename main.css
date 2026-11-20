@@ -104,16 +104,14 @@
     border-radius: 2px;
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    *, *::before, *::after { transition-duration: 0s; }
-  }
+  /* Motion follows <html data-motion>, set by motion.js from the OS setting or the switch. */
+  html[data-motion="off"] { scroll-behavior: auto; }
+  [data-motion="off"] *, [data-motion="off"] *::before, [data-motion="off"] *::after { transition-duration: 0s; }
 }
 
 @layer layout {
   .site-header,
-  main,
-  .site-footer {
+  main {
     display: grid;
     grid-template-columns:
       [full-start] minmax(var(--gutter), 1fr)
@@ -122,8 +120,7 @@
   }
 
   .site-header > *,
-  main > *,
-  .site-footer > * { grid-column: content; }
+  main > * { grid-column: content; }
 
   main { flex: 1; padding-block-end: var(--space-2xl); }
   main:has(> .panel:last-child) { padding-block-end: 0; }
@@ -163,12 +160,11 @@
 
   .skip-link:focus { translate: 0; }
 
-  /* Poster surfaces: header, hero, bands and footer sit on deep green.
+  /* Poster surfaces: header, hero and bands sit on deep green.
      Re-map the tokens so every component inside reads correctly. */
   .site-header,
   .hero,
-  .panel,
-  .site-footer {
+  .panel {
     --paper: var(--band);
     --surface: var(--band);
     --ink: var(--band-ink);
@@ -533,13 +529,6 @@
   .ws-levels li { display: flex; align-items: baseline; gap: var(--space-xs); }
   .worksheet input:is([type="checkbox"], [type="radio"]) { inline-size: 1.1em; block-size: 1.1em; accent-color: var(--real); flex: none; }
 
-  /* Footer */
-  .site-footer {
-    padding-block: var(--space-l);
-    border-block-start: 1px solid var(--line);
-    color: var(--ink-soft);
-    font-size: var(--step--1);
-  }
 }
 
 @layer utilities {
@@ -568,7 +557,7 @@
     }
 
     body { font-size: 10.5pt; line-height: 1.4; }
-    .site-header, .site-footer, .skip-link, .worksheet-tools { display: none; }
+    .site-header, .skip-link, .worksheet-tools { display: none; }
     main { display: block; padding: 0; }
     .worksheet > * + * { margin-block-start: 9pt; }
     .worksheet-title { font-size: 18pt; }
@@ -599,24 +588,22 @@
 }
 
 /* Scroll-driven reveal of the four levels: each bar grows as it enters view.
-   Without support (or with reduced motion) the ladder is simply static. */
+   Without support (or with motion off) the ladder is simply static. */
 @supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    .ladder li {
-      animation: ladder-rise linear both;
-      animation-timeline: view();
-      animation-range: entry 10% cover 40%;
-    }
-    .ladder li::before {
-      transform-origin: left bottom;
-      animation: ladder-grow linear both;
-      animation-timeline: view();
-      animation-range: entry 20% cover 45%;
-    }
-    .ladder li:nth-child(2) { animation-range: entry 18% cover 45%; }
-    .ladder li:nth-child(3) { animation-range: entry 26% cover 50%; }
-    .ladder li:nth-child(4) { animation-range: entry 34% cover 55%; }
+  [data-motion="on"] .ladder li {
+    animation: ladder-rise linear both;
+    animation-timeline: view();
+    animation-range: entry 10% cover 40%;
   }
+  [data-motion="on"] .ladder li::before {
+    transform-origin: left bottom;
+    animation: ladder-grow linear both;
+    animation-timeline: view();
+    animation-range: entry 20% cover 45%;
+  }
+  [data-motion="on"] .ladder li:nth-child(2) { animation-range: entry 18% cover 45%; }
+  [data-motion="on"] .ladder li:nth-child(3) { animation-range: entry 26% cover 50%; }
+  [data-motion="on"] .ladder li:nth-child(4) { animation-range: entry 34% cover 55%; }
 }
 @keyframes ladder-rise {
   from { opacity: 0; translate: 0 2.5rem; }
@@ -692,10 +679,8 @@
   .ax-actions .button--quiet { color: var(--band-ink); border-color: var(--band-soft); }
   .ax-how summary { cursor: pointer; color: var(--band-soft); }
   .ax-how p { margin-block-start: 0.5rem; color: var(--band-soft); max-inline-size: 60ch; }
-  @media (prefers-reduced-motion: reduce) {
-    .ax-ladder li, .ax-opt { transition: none; }
-    .ax-ladder li.is-here::after { animation: none; }
-  }
+  [data-motion="off"] :is(.ax-ladder li, .ax-opt) { transition: none; }
+  [data-motion="off"] .ax-ladder li.is-here::after { animation: none; }
 }
 @keyframes ax-drop { from { opacity: 0; translate: 0 -1.5rem; } to { opacity: 1; translate: 0 0; } }
 
@@ -705,8 +690,27 @@
   .ax-ladder li { padding-inline: 0.15rem; }
 }
 @media print {
-  body:has(.ax-result:not([hidden])) :is(.site-header, .site-footer, main > :not(#test), .ax-form, .ax-actions, .ax-how, #test > .section-heading, .ax-ladder) { display: none !important; }
+  body:has(.ax-result:not([hidden])) :is(.site-header, main > :not(#test), .ax-form, .ax-actions, .ax-how, #test > .section-heading, .ax-ladder) { display: none !important; }
   .ax-result { background: none !important; color: #000 !important; padding: 0 !important; }
   .ax-card { max-inline-size: 100% !important; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
   .ax-level, .ax-verdict p + p { color: #000 !important; }
+}
+
+/* Motion switch and the reduced-motion notice (motion.js) */
+@layer components {
+  .motion-toggle, .motion-notice button {
+    font: inherit; font-size: var(--step--1); cursor: pointer;
+    padding: 0.35em 0.8em; border-radius: 999px;
+    border: 1px solid currentColor; background: transparent; color: inherit;
+  }
+  .site-nav .motion-toggle { margin-inline-start: auto; }
+  .motion-toggle[aria-pressed="true"] { background: var(--band-real, #7fd6ad); color: var(--band, #0f3b2e); border-color: transparent; }
+  .motion-notice {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.8rem;
+    padding: 0.7rem var(--gutter); background: var(--surface); color: var(--ink);
+    border-block-end: 1px solid var(--line); font-size: var(--step--1);
+  }
+  .motion-notice[hidden] { display: none; }
+  .motion-notice p { margin: 0; }
+  .motion-notice .motion-play { background: var(--ink); color: var(--paper); border-color: var(--ink); font-weight: 600; }
 }
