@@ -714,3 +714,41 @@
   .motion-notice p { margin: 0; }
   .motion-notice .motion-play { background: var(--ink); color: var(--paper); border-color: var(--ink); font-weight: 600; }
 }
+
+/* Compare two assessments on the same four-level ladder */
+@layer components {
+  .ax-pending { color: var(--ink); padding: 0.6rem 0.9rem; border-inline-start: 4px solid var(--band-real, #7fd6ad); }
+  .ax-pending[hidden], .ax-compare[hidden] { display: none; }
+  .ax-compare {
+    margin-block-start: var(--space-m); padding: var(--space-m); border-radius: 18px;
+    background: var(--band); color: var(--band-ink);
+  }
+  .ax-compare h3 { color: var(--band-ink); margin-block-end: var(--space-s); }
+  .ax-duo { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); align-items: end; gap: 0.5rem; min-block-size: 15rem; }
+  .ax-duo li {
+    position: relative; display: flex; flex-direction: column; justify-content: flex-start; gap: 0.3rem;
+    padding: 0.6rem; border-radius: 6px 6px 0 0; background: var(--band-line); color: var(--band-ink);
+    font-size: var(--step--1); font-weight: 600;
+  }
+  .ax-duo li:nth-child(1) { block-size: 5rem; }
+  .ax-duo li:nth-child(2) { block-size: 8rem; }
+  .ax-duo li:nth-child(3) { block-size: 11rem; }
+  .ax-duo li:nth-child(4) { block-size: 14rem; }
+  .ax-duo li.is-reached { background: color-mix(in srgb, var(--band-real, #7fd6ad) 35%, var(--band-line)); }
+  .ax-duo b { display: none; padding: 0.15rem 0.5rem; border-radius: 999px; font-size: 0.8em; overflow-wrap: anywhere; }
+  .ax-duo .ax-a { background: #ff9a80; color: #2a0f08; }
+  .ax-duo .ax-b { background: #9db8ff; color: #0c1733; }
+  .ax-duo li.has-a .ax-a, .ax-duo li.has-b .ax-b { display: block; }
+  [data-motion="on"] .ax-duo li:is(.has-a, .has-b) b { animation: ax-drop 0.5s var(--ease) both; }
+  .ax-table { inline-size: 100%; margin-block-start: var(--space-m); border-collapse: collapse; table-layout: fixed; overflow-wrap: anywhere; }
+  .ax-table :is(th, td) { text-align: start; padding: 0.45rem 0.6rem; border-block-end: 1px solid var(--band-line); }
+  .ax-table thead th:nth-child(2) { color: #ff9a80; }
+  .ax-table thead th:nth-child(3) { color: #9db8ff; }
+}
+@media (max-width: 40rem) {
+  .ax-duo { gap: 0.25rem; }
+  .ax-duo li { padding: 0.35rem; font-size: 0.7rem; }
+  .ax-compare { padding: var(--space-s); }
+  .ax-table { font-size: 0.85rem; }
+  .ax-table :is(th, td) { padding: 0.4rem 0.3rem; }
+}
