@@ -13,58 +13,61 @@
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Youthwashing - Kontakt och användning">
   <meta name="twitter:description" content="Praktiska sätt att använda Youthwashing-resursen.">
-  <meta name="theme-color" content="#262626">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#0f3b2e" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f3b2e" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="main.css">
 </head>
 <body>
   <a class="skip-link" href="#innehall">Hoppa till innehållet</a>
-  <header class="site-header compact">
-    <nav id="menu" aria-label="Huvudnavigation">
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Huvudnavigation">
       <a class="brand" href="index.html">Youthwashing</a>
-      <ul>
+      <ul class="nav-list">
         <li><a href="index.html">Hem</a></li>
         <li><a href="fall.html">Exempel</a></li>
         <li><a href="om.html">Om</a></li>
         <li><a href="kontakt.html" aria-current="page">Kontakt</a></li>
       </ul>
     </nav>
+  </header>
+
+  <main id="innehall">
     <section class="hero" aria-labelledby="page-title">
       <p class="eyebrow">Användning</p>
       <h1 id="page-title">Ta med frågorna in i nästa projekt.</h1>
       <p class="lead">Resursen kan användas som samtalsstöd, checklista eller snabb granskning innan en kampanj, workshop eller rapport publiceras.</p>
     </section>
-  </header>
 
-  <main id="innehall">
-    <section class="method-grid" aria-labelledby="use-title">
-      <div class="section-heading">
+    <section class="block" aria-labelledby="use-title">
+      <header class="section-heading">
         <p class="eyebrow">Praktiskt</p>
         <h2 id="use-title">Tre sätt att använda sidan</h2>
-      </div>
+      </header>
       <div class="cards">
-        <article>
+        <article class="card">
           <h3>Inför en kampanj</h3>
           <p>Gå igenom frågorna innan innehåll, bildval och budskap låses.</p>
         </article>
-        <article>
+        <article class="card">
           <h3>I en workshop</h3>
           <p>Låt deltagare placera exempel på stegen från dekoration till beslutskraft.</p>
         </article>
-        <article>
+        <article class="card">
           <h3>Vid granskning</h3>
           <p>Jämför organisationens löften med faktisk timing, mandat, resurser och återkoppling.</p>
         </article>
       </div>
     </section>
 
-    <section id="contact" class="contact-panel">
-      <div>
+    <section id="contact" class="contact" aria-labelledby="contact-title">
+      <div class="contact-intro">
         <p class="eyebrow">Kontakt</p>
-        <h2>Skicka ett meddelande</h2>
+        <h2 id="contact-title">Skicka ett meddelande</h2>
         <p>Formuläret är statiskt i den här versionen. Det fungerar som en tydlig prototyp för framtida backend eller formulärtjänst.</p>
       </div>
-      <form action="#" method="POST">
+      <form class="form" action="#" method="POST">
         <label for="name">Namn</label>
         <input type="text" id="name" name="name" placeholder="Skriv ditt namn här" required>
 
@@ -82,8 +85,8 @@
     </section>
   </main>
 
-  <footer>
-    <p>&copy; Youthwashing - Ungdomsinflytande på riktigt</p>
+  <footer class="site-footer">
+    <p>&copy; 2026 Mahad Abdullahi</p>
   </footer>
 </body>
 </html>

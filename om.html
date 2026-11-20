@@ -13,77 +13,80 @@
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Youthwashing - Om metoden">
   <meta name="twitter:description" content="Granska ungdomsrepresentation: mandat, resurser, timing och återkoppling.">
-  <meta name="theme-color" content="#262626">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#0f3b2e" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f3b2e" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="main.css">
 </head>
 <body>
   <a class="skip-link" href="#innehall">Hoppa till innehållet</a>
-  <header class="site-header compact">
-    <nav id="menu" aria-label="Huvudnavigation">
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Huvudnavigation">
       <a class="brand" href="index.html">Youthwashing</a>
-      <ul>
+      <ul class="nav-list">
         <li><a href="index.html">Hem</a></li>
         <li><a href="fall.html">Exempel</a></li>
         <li><a href="om.html" aria-current="page">Om</a></li>
         <li><a href="kontakt.html">Kontakt</a></li>
       </ul>
     </nav>
+  </header>
+
+  <main id="innehall">
     <section class="hero" aria-labelledby="page-title">
       <p class="eyebrow">Metod</p>
       <h1 id="page-title">Ett enklare sätt att granska ungas inflytande.</h1>
       <p class="lead">Sidan är byggd som en tydlig mini-resurs: mindre slogan, mer kontrollfrågor, exempel och användbara kriterier.</p>
     </section>
-  </header>
 
-  <main id="innehall">
-    <section class="split-section">
-      <div>
+    <section class="split" aria-labelledby="purpose-title">
+      <header class="section-heading">
         <p class="eyebrow">Syfte</p>
-        <h2>Varför sidan finns</h2>
-      </div>
+        <h2 id="purpose-title">Varför sidan finns</h2>
+      </header>
       <div class="prose">
         <p>Många organisationer vill visa att de lyssnar på unga. Det är bra när det är sant, men problematiskt när det mest blir kommunikation. Den här sidan hjälper besökaren att ställa bättre frågor.</p>
         <p>Den är inte byggd för att misstänkliggöra varje kampanj med unga ansikten. Den är byggd för att skilja mellan faktisk delaktighet och symbolisk närvaro.</p>
       </div>
     </section>
 
-    <section class="method-grid" aria-labelledby="method-title">
-      <div class="section-heading">
+    <section class="block" aria-labelledby="method-title">
+      <header class="section-heading">
         <p class="eyebrow">Granskningsram</p>
         <h2 id="method-title">Fyra frågor som avslöjar nivån</h2>
-      </div>
+      </header>
       <div class="cards">
-        <article>
+        <article class="card">
           <h3>Timing</h3>
           <p>Var unga med innan problemet, målet och lösningen bestämdes?</p>
         </article>
-        <article>
+        <article class="card">
           <h3>Mandat</h3>
           <p>Finns det beslut som unga faktiskt kan påverka, eller får de bara ge synpunkter?</p>
         </article>
-        <article>
+        <article class="card">
           <h3>Resurser</h3>
           <p>Får unga ersättning, kunskap, tid och stöd för att delta på rimliga villkor?</p>
         </article>
-        <article>
+        <article class="card">
           <h3>Återkoppling</h3>
           <p>Visar organisationen vad som ändrades efter ungas input, och vad som inte ändrades?</p>
         </article>
       </div>
     </section>
 
-    <section class="action-panel" aria-labelledby="promise-title">
-      <div>
+    <section class="panel" aria-labelledby="promise-title">
+      <header class="section-heading">
         <p class="eyebrow">Princip</p>
         <h2 id="promise-title">En enkel tumregel</h2>
-      </div>
-      <p>Om unga används för legitimitet ska de också få legitima möjligheter att påverka. Annars är representationen mest dekoration.</p>
+      </header>
+      <p class="panel-note">Om unga används för legitimitet ska de också få legitima möjligheter att påverka. Annars är representationen mest dekoration.</p>
     </section>
   </main>
 
-  <footer>
-    <p>&copy; Youthwashing - Ungdomsinflytande på riktigt</p>
+  <footer class="site-footer">
+    <p>&copy; 2026 Mahad Abdullahi</p>
   </footer>
 </body>
 </html>

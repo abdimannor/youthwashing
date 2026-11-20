@@ -33,7 +33,7 @@ The fields can also be filled in on screen, but nothing is saved or sent anywher
 
 ## How it is built
 
-Plain HTML and one CSS file (`main.css`). There is no build step, no framework and no JavaScript beyond the print button on the worksheet. The site is deployed to GitHub Pages by `.github/workflows/deploy.yml` on every push to `master`.
+Plain HTML and one CSS file (`main.css`), organised in cascade layers (`reset, tokens, base, layout, components, utilities, print`) with design tokens as custom properties; light and dark colour schemes come from the tokens. There is no build step and no framework; the only JavaScript is `worksheet.js`, which wires up the print button on the worksheet. The site is deployed to GitHub Pages by `.github/workflows/deploy.yml` on every push to `master`.
 
 To run it locally, open `index.html` in a browser, or serve the folder so that links behave as they do online:
 

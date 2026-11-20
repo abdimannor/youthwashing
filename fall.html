@@ -13,43 +13,46 @@
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Youthwashing - Exempel från olika sammanhang">
   <meta name="twitter:description" content="Konstruerade exempel från skola, förening, företag och kommun.">
-  <meta name="theme-color" content="#262626">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#0f3b2e" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f3b2e" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="main.css">
 </head>
 <body>
   <a class="skip-link" href="#innehall">Hoppa till innehållet</a>
-  <header class="site-header compact">
-    <nav id="menu" aria-label="Huvudnavigation">
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Huvudnavigation">
       <a class="brand" href="index.html">Youthwashing</a>
-      <ul>
+      <ul class="nav-list">
         <li><a href="index.html">Hem</a></li>
         <li><a href="fall.html" aria-current="page">Exempel</a></li>
         <li><a href="om.html">Om</a></li>
         <li><a href="kontakt.html">Kontakt</a></li>
       </ul>
     </nav>
+  </header>
+
+  <main id="innehall">
     <section class="hero" aria-labelledby="page-title">
       <p class="eyebrow">Exempel från olika sammanhang</p>
       <h1 id="page-title">Samma mönster, olika miljöer.</h1>
       <p class="lead">Exemplen nedan är konstruerade för att visa hur skillnaden mellan symbolisk och verklig delaktighet kan se ut. De beskriver inga verkliga organisationer eller händelser.</p>
     </section>
-  </header>
 
-  <main id="innehall">
     <p class="notice"><strong>Obs:</strong> Alla exempel på sidan är hypotetiska. Likheter med verkliga verksamheter är inte avsiktliga.</p>
 
-    <section class="case" aria-labelledby="case-skola">
-      <div class="section-heading">
+    <section class="block case" aria-labelledby="case-skola">
+      <header class="section-heading">
         <p class="eyebrow">Konstruerat exempel 1</p>
         <h2 id="case-skola">Skola</h2>
-      </div>
-      <div class="case-grid">
-        <article class="case-symbolic">
+      </header>
+      <div class="verdicts">
+        <article class="verdict verdict--symbolic">
           <h3>Symbolisk delaktighet</h3>
           <p>Elevrådet bjuds in att tycka till om en ny ordningsregel efter att rektor redan har beslutat den. Två elever får vara med på bilden i skolans nyhetsbrev under rubriken "eleverna har varit delaktiga".</p>
         </article>
-        <article class="case-real">
+        <article class="verdict verdict--real">
           <h3>Verklig delaktighet</h3>
           <p>Elevrådet får frågan innan beslutet tas, får tid på schemat för att samla in andra elevers synpunkter och får ett skriftligt svar om vilka förslag som togs med och varför andra inte gjorde det.</p>
         </article>
@@ -64,17 +67,17 @@
       </div>
     </section>
 
-    <section class="case" aria-labelledby="case-forening">
-      <div class="section-heading">
+    <section class="block case" aria-labelledby="case-forening">
+      <header class="section-heading">
         <p class="eyebrow">Konstruerat exempel 2</p>
         <h2 id="case-forening">Förening eller ideell organisation</h2>
-      </div>
-      <div class="case-grid">
-        <article class="case-symbolic">
+      </header>
+      <div class="verdicts">
+        <article class="verdict verdict--symbolic">
           <h3>Symbolisk delaktighet</h3>
           <p>En förening startar en ungdomsgrupp som syns i sociala medier och på årsmötet. Gruppen har ingen egen budget och ingen plats i styrelsen, och dess förslag går vidare som "inspiration".</p>
         </article>
-        <article class="case-real">
+        <article class="verdict verdict--real">
           <h3>Verklig delaktighet</h3>
           <p>Ungdomsgruppen har en egen budgetpost som den själv beslutar om, en ordinarie plats i styrelsen med rösträtt och en kontaktperson som hjälper till med det praktiska.</p>
         </article>
@@ -89,17 +92,17 @@
       </div>
     </section>
 
-    <section class="case" aria-labelledby="case-foretag">
-      <div class="section-heading">
+    <section class="block case" aria-labelledby="case-foretag">
+      <header class="section-heading">
         <p class="eyebrow">Konstruerat exempel 3</p>
         <h2 id="case-foretag">Varumärke eller företag</h2>
-      </div>
-      <div class="case-grid">
-        <article class="case-symbolic">
+      </header>
+      <div class="verdicts">
+        <article class="verdict verdict--symbolic">
           <h3>Symbolisk delaktighet</h3>
           <p>Ett klädföretag lanserar en kampanj om klimat med unga aktivister i reklamfilmen. Aktivisterna får ingen ersättning, ser inte det färdiga materialet innan publicering och företagets produktion förändras inte.</p>
         </article>
-        <article class="case-real">
+        <article class="verdict verdict--real">
           <h3>Verklig delaktighet</h3>
           <p>De unga som medverkar får betalt, godkänner hur de framställs och sitter med i en referensgrupp med insyn i hur företaget följer upp sina klimatmål, även efter att kampanjen är slut.</p>
         </article>
@@ -114,17 +117,17 @@
       </div>
     </section>
 
-    <section class="case" aria-labelledby="case-kommun">
-      <div class="section-heading">
+    <section class="block case" aria-labelledby="case-kommun">
+      <header class="section-heading">
         <p class="eyebrow">Konstruerat exempel 4</p>
         <h2 id="case-kommun">Offentlig sektor eller kommun</h2>
-      </div>
-      <div class="case-grid">
-        <article class="case-symbolic">
+      </header>
+      <div class="verdicts">
+        <article class="verdict verdict--symbolic">
           <h3>Symbolisk delaktighet</h3>
           <p>En kommun håller en dialogkväll med unga om en ny fritidsgård. Planen är redan klar och synpunkterna sammanfattas i en bilaga som ingen återkommer till. Kvällen nämns i kommunens pressmeddelande.</p>
         </article>
-        <article class="case-real">
+        <article class="verdict verdict--real">
           <h3>Verklig delaktighet</h3>
           <p>Unga är med i arbetsgruppen från början, får vara med och prioritera hur en del av budgeten används och får en återkoppling där det framgår vad som ändrades efter deras synpunkter.</p>
         </article>
@@ -139,17 +142,17 @@
       </div>
     </section>
 
-    <section class="action-panel" aria-labelledby="next-title">
-      <div>
+    <section class="panel" aria-labelledby="next-title">
+      <header class="section-heading">
         <p class="eyebrow">Använd exemplen</p>
         <h2 id="next-title">Pröva frågorna på ett eget exempel</h2>
-      </div>
-      <p>Arbetsbladet samlar varningssignalerna, nivåerna och kontrollfrågorna från sidan på ett utskrivbart A4. Det kan användas för att granska ett eget exempel, enskilt eller i grupp. <a href="arbetsblad.html">Öppna arbetsbladet</a>.</p>
+      </header>
+      <p class="panel-note">Arbetsbladet samlar varningssignalerna, nivåerna och kontrollfrågorna från sidan på ett utskrivbart A4. Det kan användas för att granska ett eget exempel, enskilt eller i grupp. <a href="arbetsblad.html">Öppna arbetsbladet</a>.</p>
     </section>
   </main>
 
-  <footer>
-    <p>&copy; Youthwashing - Ungdomsinflytande på riktigt</p>
+  <footer class="site-footer">
+    <p>&copy; 2026 Mahad Abdullahi</p>
   </footer>
 </body>
 </html>
