@@ -626,3 +626,75 @@
   from { scale: 0.05 0.05; filter: saturate(0); }
   to { scale: 1 1; filter: none; }
 }
+
+/* Self-assessment */
+@layer components {
+  .assess { scroll-margin-block-start: var(--space-l); }
+  .ax-form { display: grid; gap: var(--space-m); }
+  .ax-intro { color: var(--ink-soft); max-inline-size: 60ch; }
+  .ax-name { font-weight: 600; }
+  #ax-org {
+    max-inline-size: 30rem; padding: 0.7rem 0.9rem;
+    border: 2px solid var(--line); border-radius: var(--radius-s); background: var(--surface);
+  }
+  .ax-grid { display: grid; gap: var(--space-s); grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr)); }
+  .ax-q {
+    display: grid; gap: var(--space-s); align-content: start; padding: var(--space-m);
+    border: 1px solid var(--line); border-radius: var(--radius-m); background: var(--surface);
+  }
+  .ax-q legend { float: left; inline-size: 100%; padding: 0; }
+  .ax-q legend strong { display: block; font-family: var(--font-display); font-size: var(--step-1); }
+  .ax-opts { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .ax-opt {
+    position: relative; padding: 0.45rem 1rem; border: 2px solid var(--line); border-radius: 99px;
+    cursor: pointer; transition: background 0.2s, border-color 0.2s, color 0.2s;
+  }
+  .ax-opt input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+  .ax-opt:has(input:checked) { background: var(--real); border-color: var(--real); color: var(--surface); }
+  .ax-opt:has(input[value="0"]:checked) { background: var(--signal); border-color: var(--signal); }
+  .ax-opt:has(input:focus-visible) { outline: 3px solid var(--focus); outline-offset: 2px; }
+  .ax-sig { display: flex; gap: 0.6rem; align-items: center; }
+  .ax-sig input { inline-size: 1.2rem; block-size: 1.2rem; accent-color: var(--signal); }
+  .ax-error { color: var(--signal); font-weight: 600; }
+  .ax-form .button { justify-self: start; cursor: pointer; }
+
+  .ax-result {
+    display: grid; gap: var(--space-m); margin-block-start: var(--space-l); padding: var(--space-l);
+    border-radius: var(--radius-m); background: var(--band); color: var(--band-ink);
+    scroll-margin-block-start: var(--space-m);
+  }
+  .ax-result[hidden] { display: none; }
+  .ax-result:focus { outline: none; }
+  .ax-result:focus-visible { outline: 3px solid var(--focus); }
+  .ax-ladder {
+    display: grid; grid-template-columns: repeat(4, 1fr); align-items: end; gap: 0.5rem;
+    block-size: 12rem; padding: 0; list-style: none; font-size: 0.85rem; color: var(--band-soft);
+  }
+  .ax-ladder li {
+    position: relative; display: flex; align-items: end; justify-content: center; block-size: calc(var(--i) * 25%);
+    padding-block-end: 0.4rem; border-radius: var(--radius-s) var(--radius-s) 0 0;
+    background: var(--band-line); transition: background 0.35s var(--ease);
+  }
+  .ax-ladder li:nth-child(1) { --i: 1; --c: var(--band-signal); }
+  .ax-ladder li:nth-child(2) { --i: 2; --c: color-mix(in oklch, var(--band-signal) 62%, var(--band-real)); }
+  .ax-ladder li:nth-child(3) { --i: 3; --c: color-mix(in oklch, var(--band-signal) 28%, var(--band-real)); }
+  .ax-ladder li:nth-child(4) { --i: 4; --c: var(--band-real); }
+  .ax-ladder li.is-on { background: var(--c); color: var(--band); font-weight: 700; }
+  .ax-ladder li.is-here::after {
+    content: ""; position: absolute; inset-block-start: -1.6rem; inline-size: 1.1rem; block-size: 1.1rem;
+    border-radius: 50%; background: var(--band-ink); animation: ax-drop 0.5s var(--ease) both;
+  }
+  .ax-level { font-family: var(--font-display); font-size: var(--step-3); line-height: 1; color: var(--band-real); }
+  .ax-verdict p + p { color: var(--band-ink); font-size: var(--step-1); max-inline-size: 40ch; margin-block-start: 0.5rem; }
+  .ax-card { inline-size: 100%; max-inline-size: 40rem; block-size: auto; border-radius: var(--radius-s); border: 1px solid var(--band-line); }
+  .ax-actions { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+  .ax-actions .button { cursor: pointer; }
+  .ax-actions .button--quiet { color: var(--band-ink); border-color: var(--band-soft); }
+  .ax-how summary { cursor: pointer; color: var(--band-soft); }
+  .ax-how p { margin-block-start: 0.5rem; color: var(--band-soft); max-inline-size: 60ch; }
+  @media (prefers-reduced-motion: reduce) {
+    .ax-ladder li, .ax-opt { transition: none; }
+    .ax-ladder li.is-here::after { animation: none; }
+  }
+}
+@keyframes ax-drop { from { opacity: 0; translate: 0 -1.5rem; } to { opacity: 1; translate: 0 0; } }

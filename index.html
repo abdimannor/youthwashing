@@ -104,6 +104,62 @@
       </ol>
     </section>
 
+    <section class="block assess" id="test" aria-labelledby="assess-title" hidden>
+      <header class="section-heading">
+        <p class="eyebrow">Testa ett eget exempel</p>
+        <h2 id="assess-title">Hur verkligt är inflytandet?</h2>
+      </header>
+      <form class="ax-form" novalidate>
+        <p class="ax-intro">Svara på sidans fyra kontrollfrågor och tre varningssignaler. Svaren stannar i webbläsaren.</p>
+        <label class="ax-name" for="ax-org">Organisation eller exempel (valfritt)</label>
+        <input id="ax-org" name="org" type="text" maxlength="60" autocomplete="off">
+        <div class="ax-grid">
+          <fieldset class="ax-q">
+            <legend><strong>Timing</strong> Var unga med innan problemet, målet och lösningen bestämdes?</legend>
+            <div class="ax-opts"><label class="ax-opt"><input type="radio" name="timing" value="2" required> Ja</label><label class="ax-opt"><input type="radio" name="timing" value="1" required> Delvis</label><label class="ax-opt"><input type="radio" name="timing" value="0" required> Nej</label></div>
+          </fieldset>
+          <fieldset class="ax-q">
+            <legend><strong>Mandat</strong> Finns det beslut som unga faktiskt kan påverka, eller får de bara ge synpunkter?</legend>
+            <div class="ax-opts"><label class="ax-opt"><input type="radio" name="mandat" value="2" required> Ja</label><label class="ax-opt"><input type="radio" name="mandat" value="1" required> Delvis</label><label class="ax-opt"><input type="radio" name="mandat" value="0" required> Nej</label></div>
+          </fieldset>
+          <fieldset class="ax-q">
+            <legend><strong>Resurser</strong> Får unga ersättning, kunskap, tid och stöd för att delta på rimliga villkor?</legend>
+            <div class="ax-opts"><label class="ax-opt"><input type="radio" name="resurser" value="2" required> Ja</label><label class="ax-opt"><input type="radio" name="resurser" value="1" required> Delvis</label><label class="ax-opt"><input type="radio" name="resurser" value="0" required> Nej</label></div>
+          </fieldset>
+          <fieldset class="ax-q">
+            <legend><strong>Återkoppling</strong> Visar organisationen vad som ändrades efter ungas input, och vad som inte ändrades?</legend>
+            <div class="ax-opts"><label class="ax-opt"><input type="radio" name="aterkoppling" value="2" required> Ja</label><label class="ax-opt"><input type="radio" name="aterkoppling" value="1" required> Delvis</label><label class="ax-opt"><input type="radio" name="aterkoppling" value="0" required> Nej</label></div>
+          </fieldset>
+          <fieldset class="ax-q ax-q--signals">
+            <legend><strong>Varningssignaler</strong> Kryssa i de som stämmer.</legend>
+            <label class="ax-sig"><input type="checkbox" name="signal" value="1"> Unga får synas men inte bestämma</label>
+            <label class="ax-sig"><input type="checkbox" name="signal" value="2"> Radikalt språk, oförändrad struktur</label>
+            <label class="ax-sig"><input type="checkbox" name="signal" value="3"> Engagemang blir varumärke</label>
+          </fieldset>
+        </div>
+        <p class="ax-error" role="alert" hidden>Svara på alla fyra kontrollfrågor.</p>
+        <button class="button" type="submit">Placera på stegen</button>
+      </form>
+      <div class="ax-result" hidden tabindex="-1" aria-labelledby="ax-result-title">
+        <h3 id="ax-result-title" class="visually-hidden">Resultat</h3>
+        <ol class="ax-ladder" aria-hidden="true">
+          <li>Dekoration</li><li>Samråd</li><li>Medskapande</li><li>Beslutskraft</li>
+        </ol>
+        <div class="ax-verdict" aria-live="polite"></div>
+        <canvas class="ax-card" width="1200" height="630" role="img" aria-label="Resultatkort"></canvas>
+        <div class="ax-actions">
+          <button class="button" type="button" data-ax="download">Ladda ner kortet</button>
+          <button class="button button--quiet" type="button" data-ax="share">Dela</button>
+          <button class="button button--quiet" type="button" data-ax="print">Skriv ut</button>
+          <button class="button button--quiet" type="button" data-ax="reset">Börja om</button>
+        </div>
+        <details class="ax-how">
+          <summary>Så räknas placeringen</summary>
+          <p>Beslutskraft kräver ja på mandat och resurser. Medskapande kräver ja på timing och minst delvis på mandat. Samråd betyder att unga får ge synpunkter i någon form. Varje ikryssad varningssignal flyttar placeringen ett steg ned. Det är ett grovt riktmärke, inte en bedömning.</p>
+        </details>
+      </div>
+    </section>
+
     <section class="panel" aria-labelledby="action-title">
       <header class="section-heading">
         <p class="eyebrow">Gör bättre</p>
@@ -150,5 +206,6 @@
   <footer class="site-footer">
     <p>&copy; 2026 Mahad Abdullahi</p>
   </footer>
+  <script src="assess.js" defer></script>
 </body>
 </html>
