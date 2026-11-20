@@ -23,7 +23,7 @@
   background: var(--band); color: var(--band-ink);
 }
 .is-presenting .slide {
-  align-self: center; margin-inline: auto; inline-size: min(100% - 2 * var(--gutter), 70rem);
+  align-self: center; justify-self: center; inline-size: min(100% - 2 * var(--gutter), 70rem);
   border-block-start-width: 1rem; padding-block: 3vh;
 }
 .is-presenting .slide--level { border-color: var(--band-real); }
