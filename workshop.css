@@ -15,9 +15,11 @@
 
 /* Presenting: the deck takes the whole viewport. */
 .is-presenting body { overflow: hidden; }
-.is-presenting .site-header, .is-presenting .skip-link, .is-presenting .ws-start, .is-presenting .motion-notice { display: none; }
+.is-presenting .site-header, .is-presenting .skip-link, .is-presenting .ws-start-actions, .is-presenting .ws-start p, .is-presenting .motion-notice { display: none; }
+/* Keep the page's h1 for assistive tech while the deck covers the screen. */
+.is-presenting .ws-start { position: absolute; inline-size: 1px; block-size: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .is-presenting .deck {
-  position: fixed; inset: 0; z-index: 50; display: grid; grid-template-rows: 1fr auto;
+  position: fixed; inset: 0; z-index: 50; margin: 0; display: grid; grid-template-rows: 1fr auto;
   background: var(--band); color: var(--band-ink);
 }
 .is-presenting .slide {
@@ -54,3 +56,4 @@
   :root:not([data-motion]).is-presenting .slide:not([hidden]) { animation: ws-in 0.45s var(--ease) both; }
 }
 @media print { .deck-bar, .ws-start-actions { display: none !important; } }
+.deck-bar[hidden] { display: none; }
