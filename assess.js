@@ -63,7 +63,12 @@
     return true;
   }
 
+  let timers = [];
+
   function climb(level) {
+    // Cancel a climb still in progress so quick resubmits never interleave.
+    timers.forEach(clearTimeout);
+    timers = [];
     steps.forEach((li) => li.classList.remove('is-on', 'is-here'));
     const light = (i) => {
       steps[i].classList.add('is-on');
@@ -73,7 +78,7 @@
       for (let i = 0; i <= level; i++) light(i);
       return;
     }
-    for (let i = 0; i <= level; i++) setTimeout(() => light(i), 120 + i * 320);
+    for (let i = 0; i <= level; i++) timers.push(setTimeout(() => light(i), 120 + i * 320));
   }
 
   function wrap(ctx, text, x, y, max, lh) {
