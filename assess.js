@@ -16,7 +16,7 @@
   const keys = ['timing', 'mandat', 'resurser', 'aterkoppling'];
   const labels = { timing: 'Timing', mandat: 'Mandat', resurser: 'Resurser', aterkoppling: 'Återkoppling' };
   const words = ['Nej', 'Delvis', 'Ja'];
-  const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+  const still = () => document.documentElement.dataset.motion === 'off';
 
   // Level names and descriptions are read from the page's own ladder.
   const levels = [...document.querySelectorAll('.ladder li')].map((li) => ({
@@ -74,7 +74,7 @@
       steps[i].classList.add('is-on');
       if (i === level) steps[i].classList.add('is-here');
     };
-    if (reduce.matches) {
+    if (still()) {
       for (let i = 0; i <= level; i++) light(i);
       return;
     }
@@ -154,7 +154,7 @@
     canvas.setAttribute('aria-label', `Resultatkort: ${levels[level].name}. ${levels[level].text}`);
     climb(level);
     history.replaceState(null, '', '#test=' + encode(s));
-    if (focus) result.focus({ preventScroll: true }), result.scrollIntoView({ behavior: reduce.matches ? 'auto' : 'smooth', block: 'start' });
+    if (focus) result.focus({ preventScroll: true }), result.scrollIntoView({ behavior: still() ? 'auto' : 'smooth', block: 'start' });
   }
 
   form.addEventListener('submit', (e) => {
