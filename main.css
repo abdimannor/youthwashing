@@ -597,3 +597,32 @@
     }
   }
 }
+
+/* Scroll-driven reveal of the four levels: each bar grows as it enters view.
+   Without support (or with reduced motion) the ladder is simply static. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .ladder li {
+      animation: ladder-rise linear both;
+      animation-timeline: view();
+      animation-range: entry 10% cover 40%;
+    }
+    .ladder li::before {
+      transform-origin: left bottom;
+      animation: ladder-grow linear both;
+      animation-timeline: view();
+      animation-range: entry 20% cover 45%;
+    }
+    .ladder li:nth-child(2) { animation-range: entry 18% cover 45%; }
+    .ladder li:nth-child(3) { animation-range: entry 26% cover 50%; }
+    .ladder li:nth-child(4) { animation-range: entry 34% cover 55%; }
+  }
+}
+@keyframes ladder-rise {
+  from { opacity: 0; translate: 0 2.5rem; }
+  to { opacity: 1; translate: 0 0; }
+}
+@keyframes ladder-grow {
+  from { scale: 0.05 0.05; filter: saturate(0); }
+  to { scale: 1 1; filter: none; }
+}
