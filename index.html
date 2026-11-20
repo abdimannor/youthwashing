@@ -24,6 +24,7 @@
   <meta name="theme-color" content="#0f3b2e" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="main.css">
+  <script src="motion.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#innehall">Hoppa till innehållet</a>
@@ -143,6 +144,7 @@
             <label class="ax-sig"><input type="checkbox" name="signal" value="3"> Engagemang blir varumärke</label>
           </fieldset>
         </div>
+        <p class="ax-pending" hidden>Jämförelse: <strong></strong> är sparad. Fyll i den andra organisationen.</p>
         <p class="ax-error" role="alert" hidden>Svara på alla fyra kontrollfrågor.</p>
         <button class="button" type="submit">Placera på stegen</button>
       </form>
@@ -156,6 +158,8 @@
         <div class="ax-actions">
           <button class="button" type="button" data-ax="download">Ladda ner kortet</button>
           <button class="button button--quiet" type="button" data-ax="share">Dela</button>
+          <button class="button button--quiet" type="button" data-ax="copy">Kopiera länk</button>
+          <button class="button button--quiet" type="button" data-ax="compare">Jämför med en annan organisation</button>
           <button class="button button--quiet" type="button" data-ax="print">Skriv ut</button>
           <button class="button button--quiet" type="button" data-ax="reset">Börja om</button>
         </div>
@@ -163,6 +167,27 @@
           <summary>Så räknas placeringen</summary>
           <p>Beslutskraft kräver ja på mandat och resurser. Medskapande kräver ja på timing och minst delvis på mandat. Samråd betyder att unga får ge synpunkter i någon form. Varje ikryssad varningssignal flyttar placeringen ett steg ned. Det är ett grovt riktmärke, inte en bedömning.</p>
         </details>
+      </div>
+      <div class="ax-compare" hidden>
+        <h3>Två organisationer på samma stege</h3>
+        <ol class="ax-duo" aria-hidden="true">
+          <li><span>Dekoration</span><b class="ax-a" data-col="a"></b><b class="ax-b" data-col="b"></b></li>
+          <li><span>Samråd</span><b class="ax-a" data-col="a"></b><b class="ax-b" data-col="b"></b></li>
+          <li><span>Medskapande</span><b class="ax-a" data-col="a"></b><b class="ax-b" data-col="b"></b></li>
+          <li><span>Beslutskraft</span><b class="ax-a" data-col="a"></b><b class="ax-b" data-col="b"></b></li>
+        </ol>
+        <table class="ax-table">
+          <caption class="visually-hidden">Jämförelse av två bedömningar</caption>
+          <thead><tr><th scope="col">Kriterium</th><th scope="col" data-col="a">Exempel A</th><th scope="col" data-col="b">Exempel B</th></tr></thead>
+          <tbody>
+            <tr data-row="niva"><th scope="row">Nivå</th><td></td><td></td></tr>
+            <tr data-row="timing"><th scope="row">Timing</th><td></td><td></td></tr>
+            <tr data-row="mandat"><th scope="row">Mandat</th><td></td><td></td></tr>
+            <tr data-row="resurser"><th scope="row">Resurser</th><td></td><td></td></tr>
+            <tr data-row="aterkoppling"><th scope="row">Återkoppling</th><td></td><td></td></tr>
+            <tr data-row="signaler"><th scope="row">Varningssignaler</th><td></td><td></td></tr>
+          </tbody>
+        </table>
       </div>
     </section>
 
@@ -209,9 +234,6 @@
     </section>
   </main>
 
-  <footer class="site-footer">
-    <p>&copy; 2026 Mahad Abdullahi</p>
-  </footer>
   <script src="assess.js" defer></script>
 </body>
 </html>

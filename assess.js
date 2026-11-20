@@ -16,7 +16,7 @@
   const keys = ['timing', 'mandat', 'resurser', 'aterkoppling'];
   const labels = { timing: 'Timing', mandat: 'Mandat', resurser: 'Resurser', aterkoppling: 'Återkoppling' };
   const words = ['Nej', 'Delvis', 'Ja'];
-  const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+  const still = () => document.documentElement.dataset.motion === 'off';
 
   // Level names and descriptions are read from the page's own ladder.
   const levels = [...document.querySelectorAll('.ladder li')].map((li) => ({
@@ -49,18 +49,45 @@
       (s.org ? '-' + encodeURIComponent(s.org) : '');
   }
 
-  function restore(hash) {
-    const m = /^#test=([0-2]{4})-([1-3]{0,3})(?:-(.*))?$/.exec(hash);
-    if (!m) return false;
-    keys.forEach((k, i) => {
-      const input = form.querySelector(`input[name="${k}"][value="${m[1][i]}"]`);
+  function parse(str) {
+    const m = /^([0-2]{4})-([1-3]{0,3})(?:-(.*))?$/.exec(str || '');
+    if (!m) return null;
+    const a = {};
+    keys.forEach((k, i) => { a[k] = Number(m[1][i]); });
+    let org = '';
+    try { org = m[3] ? decodeURIComponent(m[3]).slice(0, 60) : ''; } catch { /* ignore bad input */ }
+    return { a, signals: [...new Set(m[2])].sort(), org };
+  }
+
+  function fill(s) {
+    form.reset();
+    keys.forEach((k) => {
+      const input = form.querySelector(`input[name="${k}"][value="${s.a[k]}"]`);
       if (input) input.checked = true;
     });
     form.querySelectorAll('input[name="signal"]').forEach((cb) => {
-      cb.checked = m[2].includes(cb.value);
+      cb.checked = s.signals.includes(cb.value);
     });
-    try { form.org.value = m[3] ? decodeURIComponent(m[3]).slice(0, 60) : ''; } catch { /* ignore bad input */ }
-    return true;
+    form.org.value = s.org;
+  }
+
+  // #test=<one assessment> or #jamfor=<first>;<second>
+  function restore(hash) {
+    let m = /^#test=([^;]+)$/.exec(hash);
+    if (m) {
+      const s = parse(m[1]);
+      if (!s) return null;
+      fill(s);
+      return { s };
+    }
+    m = /^#jamfor=([^;]+);([^;]+)$/.exec(hash);
+    if (m) {
+      const a = parse(m[1]), b = parse(m[2]);
+      if (!a || !b) return null;
+      fill(b);
+      return { s: b, first: a };
+    }
+    return null;
   }
 
   let timers = [];
@@ -74,7 +101,7 @@
       steps[i].classList.add('is-on');
       if (i === level) steps[i].classList.add('is-here');
     };
-    if (reduce.matches) {
+    if (still()) {
       for (let i = 0; i <= level; i++) light(i);
       return;
     }
@@ -138,6 +165,35 @@
   }
 
   let last = null;
+  let first = null; // the saved first assessment while comparing
+
+  const compare = section.querySelector('.ax-compare');
+  const pending = section.querySelector('.ax-pending');
+  const nameOf = (s, fallback) => s.org || fallback;
+
+  function renderCompare(a, b) {
+    const la = place(a.a, a.signals), lb = place(b.a, b.signals);
+    const na = nameOf(a, 'Exempel A'), nb = nameOf(b, 'Exempel B');
+    compare.querySelectorAll('[data-col="a"]').forEach((n) => { n.textContent = na; });
+    compare.querySelectorAll('[data-col="b"]').forEach((n) => { n.textContent = nb; });
+    compare.querySelectorAll('.ax-duo li').forEach((li, i) => {
+      li.classList.toggle('has-a', i === la);
+      li.classList.toggle('has-b', i === lb);
+      li.classList.toggle('is-reached', i <= Math.max(la, lb));
+    });
+    const rows = {
+      niva: [levels[la].name, levels[lb].name],
+      ...Object.fromEntries(keys.map((k) => [k, [words[a.a[k]], words[b.a[k]]]])),
+      signaler: [`${a.signals.length} av 3`, `${b.signals.length} av 3`],
+    };
+    for (const [row, [x, y]] of Object.entries(rows)) {
+      const tr = compare.querySelector(`tr[data-row="${row}"]`);
+      tr.cells[1].textContent = x;
+      tr.cells[2].textContent = y;
+    }
+    compare.hidden = false;
+  }
+
 
   function show(s, focus) {
     const level = place(s.a, s.signals);
@@ -153,8 +209,15 @@
     draw(s, level);
     canvas.setAttribute('aria-label', `Resultatkort: ${levels[level].name}. ${levels[level].text}`);
     climb(level);
-    history.replaceState(null, '', '#test=' + encode(s));
-    if (focus) result.focus({ preventScroll: true }), result.scrollIntoView({ behavior: reduce.matches ? 'auto' : 'smooth', block: 'start' });
+    if (first) {
+      renderCompare(first, s);
+      history.replaceState(null, '', '#jamfor=' + encode(first) + ';' + encode(s));
+    } else {
+      compare.hidden = true;
+      history.replaceState(null, '', '#test=' + encode(s));
+    }
+    pending.hidden = true;
+    if (focus) result.focus({ preventScroll: true }), result.scrollIntoView({ behavior: still() ? 'auto' : 'smooth', block: 'start' });
   }
 
   form.addEventListener('submit', (e) => {
@@ -173,7 +236,26 @@
     if (!action || !last) return;
     const name = `inflytande-${levels[last.level].name.toLowerCase()}.png`;
     if (action === 'print') window.print();
+    if (action === 'compare') {
+      first = last.s;
+      form.reset();
+      result.hidden = true;
+      pending.querySelector('strong').textContent = nameOf(first, 'Det första exemplet');
+      pending.hidden = false;
+      form.org.focus();
+      section.scrollIntoView({ behavior: still() ? 'auto' : 'smooth', block: 'start' });
+      return;
+    }
+    if (action === 'copy') {
+      try {
+        await navigator.clipboard.writeText(location.href);
+        e.target.textContent = 'Länken är kopierad';
+      } catch { /* clipboard blocked */ }
+    }
     if (action === 'reset') {
+      first = null;
+      compare.hidden = true;
+      pending.hidden = true;
       form.reset();
       result.hidden = true;
       history.replaceState(null, '', location.pathname + '#test');
@@ -202,8 +284,12 @@
     }
   });
 
-  if (restore(location.hash)) {
-    const s = read();
-    if (s) show(s, false);
+  function fromHash() {
+    const r = restore(location.hash);
+    if (!r) return;
+    first = r.first || null;
+    show(r.s, false);
   }
+  fromHash();
+  addEventListener('hashchange', fromHash);
 })();
