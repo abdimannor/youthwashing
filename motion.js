@@ -4,6 +4,12 @@
 // and a "motionchange" event tells scripts when it flips.
 (() => {
   const KEY = 'motion';
+  // UI strings: Swedish defaults, overridden by window.YW_I18N.motion.
+  const T = Object.assign({
+    label: 'Animationer: ', on: 'på', off: 'av', region: 'Animationer',
+    notice: 'Din enhet ber om minskad rörelse, så animationerna står still.',
+    play: '▶ Spela animationerna', keep: 'Behåll stilla',
+  }, (window.YW_I18N || {}).motion);
   const root = document.documentElement;
   const os = matchMedia('(prefers-reduced-motion: reduce)');
   const stored = () => {
@@ -28,7 +34,7 @@
     if (!button) return;
     const on = root.dataset.motion === 'on';
     button.setAttribute('aria-pressed', String(on));
-    button.querySelector('span').textContent = on ? 'på' : 'av';
+    button.querySelector('span').textContent = on ? T.on : T.off;
     if (notice) notice.hidden = !(os.matches && !stored());
   }
 
@@ -36,24 +42,24 @@
     button = document.createElement('button');
     button.type = 'button';
     button.className = 'motion-toggle';
-    button.append('Animationer: ', document.createElement('span'));
+    button.append(T.label, document.createElement('span'));
     button.addEventListener('click', () => set(root.dataset.motion === 'on' ? 'off' : 'on'));
 
     notice = document.createElement('div');
     notice.className = 'motion-notice';
     notice.setAttribute('role', 'region');
-    notice.setAttribute('aria-label', 'Animationer');
+    notice.setAttribute('aria-label', T.region);
     const text = document.createElement('p');
-    text.textContent = 'Din enhet ber om minskad rörelse, så animationerna står still.';
+    text.textContent = T.notice;
     const play = document.createElement('button');
     play.type = 'button';
     play.className = 'motion-play';
-    play.textContent = '▶ Spela animationerna';
+    play.textContent = T.play;
     play.addEventListener('click', () => set('on'));
     const keep = document.createElement('button');
     keep.type = 'button';
     keep.className = 'motion-keep';
-    keep.textContent = 'Behåll stilla';
+    keep.textContent = T.keep;
     keep.addEventListener('click', () => set('off'));
     notice.append(text, play, keep);
 

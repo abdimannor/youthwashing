@@ -14,8 +14,25 @@
   const steps = [...section.querySelectorAll('.ax-ladder li')];
   const canvas = section.querySelector('.ax-card');
   const keys = ['timing', 'mandat', 'resurser', 'aterkoppling'];
-  const labels = { timing: 'Timing', mandat: 'Mandat', resurser: 'Resurser', aterkoppling: 'Återkoppling' };
-  const words = ['Nej', 'Delvis', 'Ja'];
+  // UI strings: Swedish defaults, overridden per language by window.YW_I18N.assess
+  // (en/i18n.js on the English pages).
+  const T = Object.assign({
+    labels: { timing: 'Timing', mandat: 'Mandat', resurser: 'Resurser', aterkoppling: 'Återkoppling' },
+    words: ['Nej', 'Delvis', 'Ja'],
+    cardTitle: 'HUR VERKLIGT ÄR INFLYTANDET?',
+    signals: 'Varningssignaler',
+    of3: (n) => `${n} av 3`,
+    cardUrl: 'abdimannor.github.io/youthwashing',
+    cardLabel: 'Resultatkort',
+    exampleA: 'Exempel A',
+    exampleB: 'Exempel B',
+    firstExample: 'Det första exemplet',
+    file: 'inflytande',
+    copied: 'Länken är kopierad',
+    shareTitle: 'Hur verkligt är inflytandet?',
+  }, (window.YW_I18N || {}).assess);
+  const labels = T.labels;
+  const words = T.words;
   const still = () => document.documentElement.dataset.motion === 'off';
 
   // Level names and descriptions are read from the page's own ladder.
@@ -145,7 +162,7 @@
     }
     ctx.fillStyle = '#ff9a80';
     ctx.font = `600 26px ${sans}`;
-    ctx.fillText('HUR VERKLIGT ÄR INFLYTANDET?', 70, 90);
+    ctx.fillText(T.cardTitle, 70, 90);
     ctx.fillStyle = '#b5cdbf';
     ctx.font = `28px ${sans}`;
     if (s.org) ctx.fillText(s.org, 70, 140);
@@ -158,10 +175,10 @@
     ctx.font = `24px ${sans}`;
     ctx.fillStyle = '#b5cdbf';
     keys.forEach((k, i) => ctx.fillText(`${labels[k]}: ${words[s.a[k]]}`, 70, y + 70 + i * 34));
-    ctx.fillText(`Varningssignaler: ${s.signals.length} av 3`, 70, y + 70 + 4 * 34);
+    ctx.fillText(`${T.signals}: ${T.of3(s.signals.length)}`, 70, y + 70 + 4 * 34);
     ctx.fillStyle = '#7fd6ad';
     ctx.font = `22px ${sans}`;
-    ctx.fillText('abdimannor.github.io/youthwashing', 70, H - 40);
+    ctx.fillText(T.cardUrl, 70, H - 40);
   }
 
   let last = null;
@@ -173,7 +190,7 @@
 
   function renderCompare(a, b) {
     const la = place(a.a, a.signals), lb = place(b.a, b.signals);
-    const na = nameOf(a, 'Exempel A'), nb = nameOf(b, 'Exempel B');
+    const na = nameOf(a, T.exampleA), nb = nameOf(b, T.exampleB);
     compare.querySelectorAll('[data-col="a"]').forEach((n) => { n.textContent = na; });
     compare.querySelectorAll('[data-col="b"]').forEach((n) => { n.textContent = nb; });
     compare.querySelectorAll('.ax-duo li').forEach((li, i) => {
@@ -184,7 +201,7 @@
     const rows = {
       niva: [levels[la].name, levels[lb].name],
       ...Object.fromEntries(keys.map((k) => [k, [words[a.a[k]], words[b.a[k]]]])),
-      signaler: [`${a.signals.length} av 3`, `${b.signals.length} av 3`],
+      signaler: [T.of3(a.signals.length), T.of3(b.signals.length)],
     };
     for (const [row, [x, y]] of Object.entries(rows)) {
       const tr = compare.querySelector(`tr[data-row="${row}"]`);
@@ -207,7 +224,7 @@
     t.textContent = levels[level].text;
     verdict.append(p, t);
     draw(s, level);
-    canvas.setAttribute('aria-label', `Resultatkort: ${levels[level].name}. ${levels[level].text}`);
+    canvas.setAttribute('aria-label', `${T.cardLabel}: ${levels[level].name}. ${levels[level].text}`);
     climb(level);
     if (first) {
       renderCompare(first, s);
@@ -234,13 +251,13 @@
   section.addEventListener('click', async (e) => {
     const action = e.target.closest('[data-ax]')?.dataset.ax;
     if (!action || !last) return;
-    const name = `inflytande-${levels[last.level].name.toLowerCase()}.png`;
+    const name = `${T.file}-${levels[last.level].name.toLowerCase()}.png`;
     if (action === 'print') window.print();
     if (action === 'compare') {
       first = last.s;
       form.reset();
       result.hidden = true;
-      pending.querySelector('strong').textContent = nameOf(first, 'Det första exemplet');
+      pending.querySelector('strong').textContent = nameOf(first, T.firstExample);
       pending.hidden = false;
       form.org.focus();
       section.scrollIntoView({ behavior: still() ? 'auto' : 'smooth', block: 'start' });
@@ -249,7 +266,7 @@
     if (action === 'copy') {
       try {
         await navigator.clipboard.writeText(location.href);
-        e.target.textContent = 'Länken är kopierad';
+        e.target.textContent = T.copied;
       } catch { /* clipboard blocked */ }
     }
     if (action === 'reset') {
@@ -273,12 +290,12 @@
       const file = blob && new File([blob], name, { type: 'image/png' });
       try {
         if (file && navigator.canShare?.({ files: [file] })) {
-          await navigator.share({ files: [file], title: 'Hur verkligt är inflytandet?', url });
+          await navigator.share({ files: [file], title: T.shareTitle, url });
         } else if (navigator.share) {
-          await navigator.share({ title: 'Hur verkligt är inflytandet?', url });
+          await navigator.share({ title: T.shareTitle, url });
         } else {
           await navigator.clipboard.writeText(url);
-          e.target.textContent = 'Länken är kopierad';
+          e.target.textContent = T.copied;
         }
       } catch { /* user cancelled */ }
     }
