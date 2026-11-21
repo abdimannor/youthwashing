@@ -9,6 +9,7 @@
 .gp-form .button { justify-self: start; }
 .gp-error { color: var(--signal); font-weight: 650; }
 .gp-result { display: grid; gap: 1.25rem; }
+.gp-result[hidden] { display: none; }
 .gp-result:focus { outline: none; }
 .gp-result h2 { font-family: var(--font-display); font-size: 1.9rem; }
 .gp-result h3 { font-size: 1.15rem; margin-block-start: 0.5rem; }
