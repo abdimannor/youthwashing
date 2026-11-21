@@ -51,6 +51,9 @@
     const a = {};
     keys.forEach((k, i) => { a[k] = Number(m[1][i]); });
     const role = m[3].trim().replace(/\s+/g, ' ').slice(0, 40);
+    // A second code on the same line is not a role: report the line instead
+    // of silently dropping a participant.
+    if (/(?:^|[#=\s])\d{4}-\d*(?=[\s-]|$)/.test(' ' + role)) return null;
     return { a, signals: [...new Set(m[2])].sort().map(Number), role: role.toLowerCase() };
   }
 
