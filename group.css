@@ -40,7 +40,7 @@
 .gp-how summary { cursor: pointer; color: var(--ink); font-weight: 650; }
 .gp-how p { margin-block-start: 0.5rem; max-inline-size: 46em; }
 .ax-code { margin-block-start: 1rem; }
-.ax-code code { font-size: 1.15em; font-weight: 700; padding: 0.05rem 0.4rem; border-radius: 0.3rem; background: var(--surface); border: 1px solid var(--line); }
+.ax-code code { font-size: 1.15em; font-weight: 700; padding: 0.05rem 0.4rem; border-radius: 0.3rem; background: transparent; color: inherit; border: 1px solid currentColor; }
 
 @media print {
   @page { size: A4; margin: 12mm; }
@@ -60,3 +60,6 @@
   .gp-print-note { display: block !important; font-size: 8pt; color: #333; }
 }
 .gp-print-note { display: none; }
+.group, .gp-result { align-content: start; }
+.group > * + *, .gp-result > * + * { margin-block-start: 0; }
+@media print { [class^="motion"], [class*=" motion"] { display: none !important; } }
