@@ -1,0 +1,62 @@
+/* Group mode (gruppen.html). Loaded after main.css; no animation. */
+.group { max-inline-size: 60rem; margin-inline: auto; padding: 2.5rem 1.25rem 4rem; display: grid; gap: 1.5rem; }
+.group h1 { font-family: var(--font-display); font-size: clamp(2rem, 1.4rem + 2.6vw, 3.2rem); line-height: 1.05; }
+.gp-lead { font-size: 1.1rem; max-inline-size: 42em; color: var(--ink-soft); }
+.gp-form { display: grid; gap: 0.6rem; padding: 1.25rem; background: var(--surface); border: 1px solid var(--line); border-radius: 0.75rem; }
+.gp-form label { font-weight: 650; }
+.gp-hint { color: var(--ink-soft); font-size: var(--step--1); }
+.gp-form textarea { inline-size: 100%; padding: 0.7rem; border: 1px solid var(--ink-soft); border-radius: 0.5rem; background: var(--paper); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+.gp-form .button { justify-self: start; }
+.gp-error { color: var(--signal); font-weight: 650; }
+.gp-result { display: grid; gap: 1.25rem; }
+.gp-result:focus { outline: none; }
+.gp-result h2 { font-family: var(--font-display); font-size: 1.9rem; }
+.gp-result h3 { font-size: 1.15rem; margin-block-start: 0.5rem; }
+.gp-meta { color: var(--ink-soft); }
+.gp-order { display: grid; gap: 0.5rem; padding-inline-start: 1.6rem; font-size: 1.05rem; }
+.gp-order li::marker { font-weight: 700; color: var(--signal); }
+.gp-facts { color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+.gp-why { display: block; color: var(--ink-soft); font-size: var(--step--1); }
+.gp-flag { display: inline-block; padding: 0.05rem 0.5rem; border-radius: 99px; background: var(--signal-tint); color: var(--signal); font-size: var(--step--1); font-weight: 650; }
+.gp-flag--gap { background: var(--real-tint); color: var(--real); }
+.gp-actions { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.gp-questions { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 26rem), 1fr)); }
+.gp-q { padding: 1rem; border: 1px solid var(--line); border-radius: 0.75rem; background: var(--surface); display: grid; gap: 0.6rem; align-content: start; }
+.gp-q.is-top { border-color: var(--signal); box-shadow: inset 4px 0 0 var(--signal); }
+.gp-q.is-gap:not(.is-top) { border-color: var(--real); box-shadow: inset 4px 0 0 var(--real); }
+.gp-q h4 { font-size: 1rem; font-weight: 400; }
+.gp-q h4 strong { display: block; font-size: 1.1rem; }
+.gp-bar { display: flex; min-block-size: 2rem; border-radius: 0.4rem; overflow: hidden; border: 1px solid var(--line); }
+.gp-seg { display: grid; place-items: center; padding-inline: 0.3rem; font-size: var(--step--1); font-weight: 650; white-space: nowrap; overflow: hidden; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+.gp-seg--0 { background: var(--signal-tint); color: var(--signal); }
+.gp-seg--1 { background: var(--paper); color: var(--ink); }
+.gp-seg--2 { background: var(--real-tint); color: var(--real); }
+.gp-roles { display: flex; flex-wrap: wrap; gap: 0.4rem 1rem; font-size: var(--step--1); }
+.gp-roles div { display: flex; gap: 0.35rem; }
+.gp-roles dt { color: var(--ink-soft); }
+.gp-roles dd { font-weight: 700; font-variant-numeric: tabular-nums; }
+.gp-signals { display: grid; gap: 0.3rem; padding-inline-start: 1.2rem; }
+.gp-how { color: var(--ink-soft); }
+.gp-how summary { cursor: pointer; color: var(--ink); font-weight: 650; }
+.gp-how p { margin-block-start: 0.5rem; max-inline-size: 46em; }
+.ax-code { margin-block-start: 1rem; }
+.ax-code code { font-size: 1.15em; font-weight: 700; padding: 0.05rem 0.4rem; border-radius: 0.3rem; background: var(--surface); border: 1px solid var(--line); }
+
+@media print {
+  @page { size: A4; margin: 12mm; }
+  .site-header, .skip-link, .gp-form, .gp-lead, .gp-actions, .gp-how, .motion-ui, aside { display: none !important; }
+  body { background: #fff; color: #000; font-size: 10pt; }
+  .group { padding: 0; gap: 0.5rem; max-inline-size: none; }
+  .group h1 { font-size: 18pt; }
+  .gp-result { gap: 0.4rem; }
+  .gp-result h2 { font-size: 14pt; }
+  .gp-result h3 { font-size: 11pt; margin: 0; }
+  .gp-order { gap: 0.15rem; font-size: 10pt; }
+  .gp-questions { grid-template-columns: 1fr 1fr; gap: 0.4rem; }
+  .gp-q { padding: 0.45rem; gap: 0.3rem; break-inside: avoid; background: none; }
+  .gp-q h4 { font-size: 8.5pt; }
+  .gp-q h4 strong { font-size: 10pt; }
+  .gp-bar { min-block-size: 1.3rem; }
+  .gp-print-note { display: block !important; font-size: 8pt; color: #333; }
+}
+.gp-print-note { display: none; }

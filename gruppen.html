@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Youthwashing - Samla gruppen</title>
+  <meta name="description" content="Samla deltagarnas koder från självtestet och se var gruppen är oense, fråga för fråga. Allt räknas i webbläsaren.">
+  <link rel="canonical" href="https://abdimannor.github.io/youthwashing/gruppen.html">
+  <link rel="alternate" hreflang="sv" href="https://abdimannor.github.io/youthwashing/gruppen.html">
+  <link rel="alternate" hreflang="en" href="https://abdimannor.github.io/youthwashing/en/gruppen.html">
+  <link rel="alternate" hreflang="x-default" href="https://abdimannor.github.io/youthwashing/gruppen.html">
+  <meta property="og:title" content="Youthwashing - Samla gruppen">
+  <meta property="og:description" content="Samla deltagarnas koder från självtestet och se var gruppen är oense, fråga för fråga. Allt räknas i webbläsaren.">
+  <meta property="og:url" content="https://abdimannor.github.io/youthwashing/gruppen.html">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://abdimannor.github.io/youthwashing/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Rubriken Ungdomsinflytande måste vara mer än en bild i en kampanj. på mörkgrön bakgrund med fyra stigande färgade staplar">
+  <meta name="twitter:image" content="https://abdimannor.github.io/youthwashing/og.png">
+  <meta name="twitter:image:alt" content="Rubriken Ungdomsinflytande måste vara mer än en bild i en kampanj. på mörkgrön bakgrund med fyra stigande färgade staplar">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Youthwashing - Samla gruppen">
+  <meta name="twitter:description" content="Samla deltagarnas koder från självtestet och se var gruppen är oense, fråga för fråga. Allt räknas i webbläsaren.">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#0f3b2e" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f3b2e" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="group.css">
+  <script src="motion.js"></script>
+  <script src="gruppen.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#innehall">Hoppa till innehållet</a>
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Huvudnavigation">
+      <a class="brand" href="index.html">Youthwashing</a>
+      <ul class="nav-list">
+        <li><a href="index.html">Hem</a></li>
+        <li><a href="fall.html">Exempel</a></li>
+        <li><a href="om.html">Om</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+        <li class="lang-switch"><a href="en/gruppen.html" lang="en" hreflang="en"><span aria-hidden="true">EN</span><span class="visually-hidden">English</span></a></li>
+      </ul>
+    </nav>
+  </header>
+
+    <main id="innehall" class="group" data-group hidden>
+    <h1>Samla gruppen</h1>
+    <p class="gp-lead">Varje deltagare gör självtestet på sin egen telefon och får en kort kod. Klistra in koderna här, en deltagare per rad, gärna med roll efter koden. Inget skickas någonstans: allt räknas i den här webbläsaren.</p>
+    <form class="gp-form">
+      <label for="gp-codes">Koder, en deltagare per rad</label>
+      <p class="gp-hint" id="gp-hint">Till exempel: 2101-13 styrelse. Roll kan vara ung deltagare, personal, styrelse eller egen text. Koden finns under resultatet i <a href="index.html#test">självtestet</a>.</p>
+      <textarea id="gp-codes" name="codes" rows="7" aria-describedby="gp-hint" spellcheck="false" autocomplete="off"></textarea>
+      <button class="button" type="submit">Visa var gruppen är oense</button>
+    </form>
+    <p class="gp-error" role="alert" hidden></p>
+    <section class="gp-result" hidden tabindex="-1" aria-labelledby="gp-title">
+      <h2 id="gp-title">Där ni är oense</h2>
+      <p class="gp-meta"></p>
+      <h3>Diskussionsordning</h3>
+      <ol class="gp-order"></ol>
+      <div class="gp-actions">
+        <a class="button" data-gp-workshop href="workshop.html">Starta workshopen i den här ordningen</a>
+        <button class="button button--quiet" type="button" data-gp-print>Skriv ut sammanfattningen</button>
+        <button class="button button--quiet" type="button" data-gp-copy>Kopiera länk</button>
+      </div>
+      <h3>Svar per kontrollfråga</h3>
+      <div class="gp-questions"></div>
+      <h3>Varningssignaler</h3>
+      <ul class="gp-signals"></ul>
+      <details class="gp-how">
+        <summary>Så räknas oenigheten</summary>
+        <p>Svaren räknas som nej 0, delvis 1 och ja 2. Spridning är standardavvikelsen: 0 betyder att alla svarade lika, 1 att gruppen är delad mellan nej och ja. Skillnad mellan roller är avståndet mellan den högsta och den lägsta rollens snitt. Diskussionsordningen sorterar på spridning plus skillnad mellan roller.</p>
+      </details>
+      <p class="gp-print-note">abdimannor.github.io/youthwashing/gruppen.html</p>
+    </section>
+  </main>
+  <noscript><p class="group">Gruppläget behöver JavaScript.</p></noscript>
+
+</body>
+</html>

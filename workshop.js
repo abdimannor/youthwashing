@@ -20,16 +20,19 @@
     timeUp: 'Tiden är ute',
   }, (window.YW_I18N || {}).workshop);
   let at = 0;
+  // Slide order: all slides, or the order from group mode (#ordning=10,12,9,11).
+  let order = slides.map((_, i) => i);
+  let ordered = false;
   let timer = 0;
   let ends = 0;
 
   document.querySelector('[data-ws-actions]').hidden = false;
 
   function show(i) {
-    at = Math.max(0, Math.min(slides.length - 1, i));
-    slides.forEach((s, j) => { s.hidden = j !== at; });
-    count.textContent = T.count(at + 1, slides.length);
-    history.replaceState(null, '', `#${T.hash}-${at + 1}`);
+    at = Math.max(0, Math.min(order.length - 1, i));
+    slides.forEach((s, j) => { s.hidden = j !== order[at]; });
+    count.textContent = T.count(at + 1, order.length);
+    if (!ordered) history.replaceState(null, '', `#${T.hash}-${order[at] + 1}`);
   }
 
   function open(i = 0) {
@@ -43,6 +46,8 @@
     root.classList.remove('is-presenting');
     bar.hidden = true;
     slides.forEach((s) => { s.hidden = false; });
+    order = slides.map((_, i) => i);
+    ordered = false;
     stopTimer();
     if (document.fullscreenElement) document.exitFullscreen();
     history.replaceState(null, '', location.pathname);
@@ -97,10 +102,15 @@
     if (k === 'ArrowRight' || k === 'ArrowDown' || k === 'PageDown' || (k === ' ' && !onButton)) { e.preventDefault(); show(at + 1); }
     else if (k === 'ArrowLeft' || k === 'ArrowUp' || k === 'PageUp') { e.preventDefault(); show(at - 1); }
     else if (k === 'Home') { e.preventDefault(); show(0); }
-    else if (k === 'End') { e.preventDefault(); show(slides.length - 1); }
+    else if (k === 'End') { e.preventDefault(); show(order.length - 1); }
     else if (k === 'Escape' && !document.fullscreenElement) close();
   });
 
   const m = new RegExp(`^#${T.hash}-(\\d+)$`).exec(location.hash);
   if (m) open(Number(m[1]) - 1);
+  const g = /^#(?:ordning|order)=([\d,]+)$/.exec(location.hash);
+  if (g) {
+    const list = [...new Set(g[1].split(',').map((n) => Number(n) - 1))].filter((n) => slides[n]);
+    if (list.length) { order = list; ordered = true; open(0); }
+  }
 })();

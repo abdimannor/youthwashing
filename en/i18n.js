@@ -1,4 +1,4 @@
-// English UI strings for the shared scripts (motion.js, assess.js, workshop.js).
+// English UI strings for the shared scripts (motion.js, assess.js, workshop.js, gruppen.js).
 // Loaded before them on the English pages; the Swedish defaults live in each script.
 window.YW_I18N = {
   motion: {
@@ -25,5 +25,29 @@ window.YW_I18N = {
     count: (n, total) => `Slide ${n} of ${total}`,
     hash: 'slide',
     timeUp: 'Time is up',
+  },
+  group: {
+    labels: { timing: 'Timing', mandat: 'Mandate', resurser: 'Resources', aterkoppling: 'Feedback' },
+    questions: {
+      timing: 'Were young people involved before the problem, the goal and the solution were decided?',
+      mandat: 'Are there decisions young people can actually influence, or may they only give their views?',
+      resurser: 'Do young people get pay, knowledge, time and support to take part on reasonable terms?',
+      aterkoppling: "Does the organisation show what changed after young people's input, and what did not?",
+    },
+    signals: ['Young people are seen but do not decide', 'Radical language, unchanged structure', 'Engagement becomes branding'],
+    words: ['No', 'Partly', 'Yes'],
+    meta: (n, roles) => `${n} ${n === 1 ? 'participant' : 'participants'}${roles ? ` · ${roles}` : ''}`,
+    spread: 'Spread',
+    gap: 'Gap between roles',
+    mostSpread: 'Most disagreement',
+    mostGap: 'Largest gap between roles',
+    gapBetween: (hi, lo) => `${hi} answer higher than ${lo}`,
+    agree: 'Everyone answered the same',
+    roleMean: 'Average per role',
+    ticked: (n, total) => `${n} of ${total} ticked it`,
+    bad: (lines) => `Could not read line ${lines.join(', ')}. A code looks like this: 2101-13.`,
+    empty: 'Paste at least one code.',
+    copied: 'Link copied',
+    hash: 'group',
   },
 };
