@@ -77,12 +77,21 @@ test('two codes on one line are rejected, not read as one participant with a cod
   expect(ok.role).toBe('ung deltagare');
 });
 
-test('the print summary fits one A4 page', async ({ page }) => {
+test('the print summary fits one A4 page', async ({ page, browserName }) => {
   await submit(page, 'gruppen.html', five);
   await page.emulateMedia({ media: 'print' });
-  const pdf = await page.pdf({ format: 'A4' });
-  const pages = Number((/\/Count (\d+)/.exec(pdf.toString('latin1')) || [])[1]);
-  expect(pages).toBe(1);
+  // Portable check in every engine: lay the print styles out at the A4 content
+  // box (210 x 297 mm minus the 12 mm @page margins in group.css, at 96 px/in).
+  const mm = 96 / 25.4;
+  await page.setViewportSize({ width: Math.floor(186 * mm), height: Math.floor(273 * mm) });
+  const height = await page.evaluate(() => document.documentElement.scrollHeight);
+  expect(height).toBeLessThanOrEqual(Math.ceil(273 * mm));
+  // page.pdf() exists only in Chromium; there, count the real PDF pages as well.
+  if (browserName === 'chromium') {
+    const pdf = await page.pdf({ format: 'A4' });
+    const pages = Number((/\/Count (\d+)/.exec(pdf.toString('latin1')) || [])[1]);
+    expect(pages).toBe(1);
+  }
 });
 
 test('workshop walks the group order and labels slides by that order (sv)', async ({ page }) => {
