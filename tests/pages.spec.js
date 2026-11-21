@@ -2,7 +2,7 @@
 const { test, expect } = require('@playwright/test');
 const { watch, axe } = require('./helpers');
 
-const pages = ['arbetsblad.html','en/arbetsblad.html','en/fall.html','en/index.html','en/kontakt.html','en/om.html','en/workshop.html','fall.html','index.html','kontakt.html','om.html','workshop.html'];
+const pages = ['arbetsblad.html','en/arbetsblad.html','en/fall.html','en/gruppen.html','en/index.html','en/kontakt.html','en/om.html','en/workshop.html','fall.html','gruppen.html','index.html','kontakt.html','om.html','workshop.html'];
 
 for (const file of pages) {
   test(`${file} loads without console errors or failed requests`, async ({ page }) => {

@@ -226,6 +226,9 @@
     draw(s, level);
     canvas.setAttribute('aria-label', `${T.cardLabel}: ${levels[level].name}. ${levels[level].text}`);
     climb(level);
+    // Short code for group mode (gruppen.html): the answers without the name.
+    const code = section.querySelector('.ax-code-value');
+    if (code) code.textContent = keys.map((k) => s.a[k]).join('') + '-' + s.signals.join('');
     if (first) {
       renderCompare(first, s);
       history.replaceState(null, '', '#jamfor=' + encode(first) + ';' + encode(s));
