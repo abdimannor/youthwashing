@@ -28,6 +28,25 @@
 
   document.querySelector('[data-ws-actions]').hidden = false;
 
+  // Original slide labels and kickers ("Fyra kontrollfrågor · 1/4"), restored on close.
+  const kicker = (s) => s.querySelector('.sl-kicker');
+  const saved = slides.map((s) => ({ label: s.getAttribute('aria-label'), kicker: kicker(s) && kicker(s).textContent }));
+
+  // In an ordered subset, number the slides by their place in that order.
+  function relabel() {
+    slides.forEach((s, j) => {
+      const pos = order.indexOf(j);
+      const k = kicker(s);
+      if (ordered && pos >= 0) {
+        s.setAttribute('aria-label', T.count(pos + 1, order.length));
+        if (k) k.textContent = saved[j].kicker.replace(/\d+\/\d+$/, `${pos + 1}/${order.length}`);
+      } else {
+        s.setAttribute('aria-label', saved[j].label);
+        if (k) k.textContent = saved[j].kicker;
+      }
+    });
+  }
+
   function show(i) {
     at = Math.max(0, Math.min(order.length - 1, i));
     slides.forEach((s, j) => { s.hidden = j !== order[at]; });
@@ -48,6 +67,7 @@
     slides.forEach((s) => { s.hidden = false; });
     order = slides.map((_, i) => i);
     ordered = false;
+    relabel();
     stopTimer();
     if (document.fullscreenElement) document.exitFullscreen();
     history.replaceState(null, '', location.pathname);
@@ -111,6 +131,6 @@
   const g = /^#(?:ordning|order)=([\d,]+)$/.exec(location.hash);
   if (g) {
     const list = [...new Set(g[1].split(',').map((n) => Number(n) - 1))].filter((n) => slides[n]);
-    if (list.length) { order = list; ordered = true; open(0); }
+    if (list.length) { order = list; ordered = true; relabel(); open(0); }
   }
 })();
