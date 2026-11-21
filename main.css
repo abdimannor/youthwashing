@@ -104,7 +104,7 @@
     border-radius: 2px;
   }
 
-  /* Motion follows <html data-motion>, set by motion.js from the OS setting or the switch. */
+  /* Motion follows <html data-motion>, set by motion.js: on by default, off only by the visitor's choice. */
   html[data-motion="off"] { scroll-behavior: auto; }
   [data-motion="off"] *, [data-motion="off"] *::before, [data-motion="off"] *::after { transition-duration: 0s; }
 }
@@ -696,23 +696,25 @@
   .ax-level, .ax-verdict p + p { color: #000 !important; }
 }
 
-/* Motion switch and the reduced-motion notice (motion.js) */
+/* Quiet header controls: language link and motion button (motion.js) */
 @layer components {
-  .motion-toggle, .motion-notice button {
-    font: inherit; font-size: var(--step--1); cursor: pointer;
-    padding: 0.35em 0.8em; border-radius: 999px;
-    border: 1px solid currentColor; background: transparent; color: inherit;
+  .nav-controls { display: flex; align-items: center; gap: 0.4rem; margin-inline-start: auto; }
+  .ctl-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.3rem;
+    inline-size: 34px; block-size: 34px; padding: 0; flex: none;
+    border: 1px solid color-mix(in srgb, currentColor 22%, transparent); border-radius: 999px;
+    background: transparent; color: inherit; font: inherit; text-decoration: none; cursor: pointer;
+    transition: background-color 150ms;
   }
-  .site-nav .motion-toggle { margin-inline-start: auto; }
-  .motion-toggle[aria-pressed="true"] { background: var(--band-real, #7fd6ad); color: var(--band, #0f3b2e); border-color: transparent; }
-  .motion-notice {
-    display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.8rem;
-    padding: 0.7rem var(--gutter); background: var(--surface); color: var(--ink);
-    border-block-end: 1px solid var(--line); font-size: var(--step--1);
-  }
-  .motion-notice[hidden] { display: none; }
-  .motion-notice p { margin: 0; }
-  .motion-notice .motion-play { background: var(--ink); color: var(--paper); border-color: var(--ink); font-weight: 600; }
+  .ctl-btn svg { flex: none; }
+  .ctl-btn:hover, .ctl-btn:focus-visible { background: color-mix(in srgb, currentColor 10%, transparent); }
+  .ctl-btn:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+  .ctl-lang { inline-size: auto; padding-inline: 0.55rem 0.65rem; }
+  .ctl-code { font-size: 11px; font-weight: 600; letter-spacing: 0.06em; line-height: 1; }
+  .ctl-motion[aria-pressed="true"] .i-play, .ctl-motion[aria-pressed="false"] .i-pause { display: none; }
+  html:not([data-motion]) .ctl-motion { display: none; }
+  /* Narrow screens: the controls stay beside the brand, the links wrap below. */
+  @media (max-width: 48rem) { .site-nav .nav-list { order: 1; flex-basis: 100%; } }
 }
 
 /* Compare two assessments on the same four-level ladder */
@@ -753,5 +755,3 @@
   .ax-table :is(th, td) { padding: 0.4rem 0.3rem; }
 }
 
-/* Language switch (SV/EN) */
-.lang-switch a { font-weight: 700; letter-spacing: 0.06em; }

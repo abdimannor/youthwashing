@@ -45,7 +45,7 @@
 
 @media print {
   @page { size: A4; margin: 12mm; }
-  .site-header, .skip-link, .gp-form, .gp-lead, .gp-actions, .gp-how, .motion-ui, aside { display: none !important; }
+  .site-header, .skip-link, .gp-form, .gp-lead, .gp-actions, .gp-how, .nav-controls, aside { display: none !important; }
   body { background: #fff; color: #000; font-size: 10pt; }
   .group { padding: 0; gap: 0.5rem; max-inline-size: none; }
   .group h1 { font-size: 18pt; }

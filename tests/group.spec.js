@@ -53,7 +53,7 @@ test('five participants with roles give the expected spreads, gaps and order (sv
   await expect(page.locator('[data-gp-workshop]')).toHaveAttribute('href', 'workshop.html#ordning=9,11,10,12');
   await expect(page.locator('.gp-order li').first()).toContainText('Störst oenighet');
   await expect(page.locator('.gp-q.is-top')).toHaveCount(1);
-  expect(await page.evaluate(() => document.documentElement.dataset.motion)).toBe('off');
+  expect(await page.evaluate(() => document.documentElement.dataset.motion)).toBe('on');
   expect(page.url()).toMatch(/#grupp=/);
   await axe(page);
   expect(problems).toEqual([]);

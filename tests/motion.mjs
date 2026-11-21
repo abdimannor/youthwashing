@@ -1,4 +1,4 @@
-// Motion switch check in a reduced-motion browser.
+// Motion check in a reduced-motion browser: moving by default, the button pauses it.
 // Run: serve the repo on :8731 (python3 -m http.server 8731), then
 // PLAYWRIGHT=<path to playwright/index.mjs> CHROME_PATH=<chrome> node tests/motion.mjs
 const { chromium } = await import(process.env.PLAYWRIGHT || 'playwright');
@@ -11,13 +11,12 @@ const state = () => p.evaluate(() => [document.documentElement.dataset.motion,
   getComputedStyle(document.querySelector('.ladder li')).animationName]);
 await p.goto(U);
 let [m, a] = await state();
-assert(m === 'off' && a === 'none', 'still by default when the OS asks for reduced motion');
-assert(await p.isVisible('.motion-notice'), 'notice with a play button is shown');
-await p.click('.motion-play');
+assert(m === 'on' && a === 'ladder-rise', 'moving by default even when the OS asks for reduced motion');
+assert((await p.locator('.motion-notice').count()) === 0, 'no reduced-motion notice');
+await p.click('header .ctl-motion');
 [m, a] = await state();
-assert(m === 'on' && a === 'ladder-rise', 'animating after the switch');
+assert(m === 'off' && a === 'none', 'still after the pause button');
 await p.reload();
 [m, a] = await state();
-assert(m === 'on' && a === 'ladder-rise', 'choice survives reload');
-assert(!(await p.isVisible('.motion-notice')), 'notice stays away once a choice is made');
+assert(m === 'off' && a === 'none', 'choice survives reload');
 await b.close();
