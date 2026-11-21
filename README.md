@@ -48,7 +48,7 @@ Plain HTML and one stylesheet (`main.css`), organised in cascade layers (`reset,
 - `assess.js`: the self-assessment (its section stays hidden without JavaScript)
 - `workshop.js` and `workshop.css`: slide mode
 - `worksheet.js`: the print button
-- `motion.js`: a visible motion switch. It follows the system's reduced-motion setting by default, lets the visitor override it, and remembers the choice.
+- `motion.js`: the pause button. Motion is on by default; turning it off is remembered.
 
 `tests/motion.mjs` checks the motion switch. The site deploys to GitHub Pages through `.github/workflows/deploy.yml` on every push to `master`.
 
