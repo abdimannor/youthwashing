@@ -1,11 +1,7 @@
 // English UI strings for the shared scripts (motion.js, assess.js, workshop.js, gruppen.js).
 // Loaded before them on the English pages; the Swedish defaults live in each script.
 window.YW_I18N = {
-  motion: {
-    label: 'Animations: ', on: 'on', off: 'off', region: 'Animations',
-    notice: 'Your device asks for reduced motion, so the animations are paused.',
-    play: '▶ Play the animations', keep: 'Keep still',
-  },
+  motion: { pause: 'Pause motion', play: 'Play motion' },
   assess: {
     labels: { timing: 'Timing', mandat: 'Mandate', resurser: 'Resources', aterkoppling: 'Feedback' },
     words: ['No', 'Partly', 'Yes'],
