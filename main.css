@@ -752,3 +752,6 @@
   .ax-table { font-size: 0.85rem; }
   .ax-table :is(th, td) { padding: 0.4rem 0.3rem; }
 }
+
+/* Language switch (SV/EN) */
+.lang-switch a { font-weight: 700; letter-spacing: 0.06em; }
