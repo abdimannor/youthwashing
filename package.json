@@ -1,0 +1,13 @@
+{
+  "name": "youthwashing",
+  "private": true,
+  "scripts": {
+    "test": "playwright test",
+    "validate": "html-validate \"**/*.html\""
+  },
+  "devDependencies": {
+    "@playwright/test": "1.64.0",
+    "axe-core": "^4.14.1",
+    "html-validate": "^11.21.1"
+  }
+}
