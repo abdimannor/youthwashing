@@ -72,7 +72,7 @@ if (SHOTS) {
   await p.emulateMedia({ media: 'print' });
   await p.pdf({ path: `${SHOTS}/gruppen-sv.pdf`, format: 'A4', printBackground: true });
   await p.screenshot({ path: `${SHOTS}/gruppen-print.png`, fullPage: true });
-  await p.emulateMedia({ media: 'screen' });
+  await p.emulateMedia({ media: null });
   await p.setViewportSize({ width: 1280, height: 800 });
 }
 const pdf = await p.pdf({ format: 'A4' });
