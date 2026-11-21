@@ -13,6 +13,12 @@
   const fullBtn = deck.querySelector('[data-ws-full]');
   const startBtn = document.querySelector('[data-ws-start]');
   const root = document.documentElement;
+  // UI strings: Swedish defaults, overridden by window.YW_I18N.workshop.
+  const T = Object.assign({
+    count: (n, total) => `Bild ${n} av ${total}`,
+    hash: 'bild',
+    timeUp: 'Tiden är ute',
+  }, (window.YW_I18N || {}).workshop);
   let at = 0;
   let timer = 0;
   let ends = 0;
@@ -22,8 +28,8 @@
   function show(i) {
     at = Math.max(0, Math.min(slides.length - 1, i));
     slides.forEach((s, j) => { s.hidden = j !== at; });
-    count.textContent = `Bild ${at + 1} av ${slides.length}`;
-    history.replaceState(null, '', `#bild-${at + 1}`);
+    count.textContent = T.count(at + 1, slides.length);
+    history.replaceState(null, '', `#${T.hash}-${at + 1}`);
   }
 
   function open(i = 0) {
@@ -47,7 +53,7 @@
     const left = Math.max(0, Math.round((ends - Date.now()) / 1000));
     const m = Math.floor(left / 60);
     const s = String(left % 60).padStart(2, '0');
-    clock.textContent = left ? `${m}:${s}` : 'Tiden är ute';
+    clock.textContent = left ? `${m}:${s}` : T.timeUp;
     clock.classList.toggle('is-done', !left);
     if (!left) { clearInterval(timer); timer = 0; }
   }
@@ -95,6 +101,6 @@
     else if (k === 'Escape' && !document.fullscreenElement) close();
   });
 
-  const m = /^#bild-(\d+)$/.exec(location.hash);
+  const m = new RegExp(`^#${T.hash}-(\\d+)$`).exec(location.hash);
   if (m) open(Number(m[1]) - 1);
 })();
